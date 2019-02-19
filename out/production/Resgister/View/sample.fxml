@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="1045.0" style="-fx-background-color: #fafafa;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProduitController">
    <children>
-      <Pane prefHeight="677.0" prefWidth="180.0" style="-fx-background-color: #4db6ac#4db6ac#4db6ac;">
+      <Pane prefHeight="677.0" prefWidth="180.0" style="-fx-background-color: #4db6ac;">
          <effect>
             <DropShadow color="#00000057" />
          </effect>
