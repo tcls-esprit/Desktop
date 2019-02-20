@@ -95,5 +95,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
+      <Label fx:id="result" alignment="CENTER" layoutX="1103.0" layoutY="200.0" prefHeight="35.0" prefWidth="169.0" />
     </children>
 </AnchorPane>

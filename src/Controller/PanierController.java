@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -39,8 +40,12 @@ public class PanierController implements Initializable {
     private TableView<ShoppingCart> table_produit;
     @FXML
     private JFXTextField searchInput;
+    @FXML
+    private Label result;
 
-    public PanierController(){ cnx= ConnectionDB.getInstance().getConnection(); }
+    public PanierController() {
+        cnx = ConnectionDB.getInstance().getConnection();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,6 +60,7 @@ public class PanierController implements Initializable {
         initColumns();
         loadData();
     }
+
     private void initColumns() {
         table_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         table_prix.setCellValueFactory(new PropertyValueFactory<>("price"));
@@ -63,6 +69,7 @@ public class PanierController implements Initializable {
 
 
     }
+
     private void loadData() {
         ObservableList<ShoppingCart> data = null;
         try {
@@ -96,6 +103,7 @@ public class PanierController implements Initializable {
         initColumns();
         table_produit.setItems(data);
     }
+
     @FXML
     private void editableQuantity(TableColumn.CellEditEvent editedCell) throws SQLException {
         ShoppingCart prod = table_produit.getSelectionModel().getSelectedItem();
@@ -107,16 +115,16 @@ public class PanierController implements Initializable {
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1, editedCell.getNewValue().toString());
         ps.executeUpdate();
-        String req1="select quantity from cart where id="+id;
+        String req1 = "select quantity from cart where id=" + id;
         Statement st = cnx.createStatement();
         ResultSet rs = st.executeQuery(req1);
         if (rs.next()) {
-        String req2 = "update cart set total=? where id=" + id;
-        PreparedStatement ps1 = cnx.prepareStatement(req2);
-        ps1.setDouble(1, prod.getPrice()*rs.getInt("quantity"));
-        ps1.executeUpdate();
-        loadData();
-    }
+            String req2 = "update cart set total=? where id=" + id;
+            PreparedStatement ps1 = cnx.prepareStatement(req2);
+            ps1.setDouble(1, prod.getPrice() * rs.getInt("quantity"));
+            ps1.executeUpdate();
+            loadData();
+        }
     }
 
     @FXML
@@ -135,8 +143,21 @@ public class PanierController implements Initializable {
     @FXML
     private void payItems(ActionEvent actionEvent) throws SQLException {
         CartServices c = new CartServices();
-        Double tot = c.showCart(2 ).stream().mapToDouble(e->e.getTotal()).sum();
+        Double tot = c.showCart(2).stream().mapToDouble(e -> e.getTotal()).sum();
         System.out.println(tot);
         //pay.chargeCreditCard(tot);
+        result.setText("Payment Accepted! =D");
+        c.showCart(2).stream().forEach(e->{
+            int id = e.getId();
+            //System.out.println(id);
+            String req1 = "delete from cart where id="+id;
+            try {
+                Statement st = cnx.createStatement();
+                st.executeUpdate(req1);
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        });
+        loadData();
     }
 }
