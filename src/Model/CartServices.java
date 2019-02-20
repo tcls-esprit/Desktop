@@ -45,9 +45,10 @@ public class CartServices{
                     Statement st3 = cnx.createStatement();
                     ResultSet rst2 = st3.executeQuery(req5);
                     while (rst2.next()){
-                    String req4 = "UPDATE cart SET quantity=? WHERE id=" + rst2.getInt("id");
+                    String req4 = "UPDATE cart SET quantity=?,total=? WHERE id=" + rst2.getInt("id");
                     PreparedStatement ps1 = cnx.prepareStatement(req4);
                     ps1.setInt(1, c.getQuantity() + rst2.getInt("Quantity"));
+                    ps1.setDouble(2, c.getTotal() + rst2.getDouble("Total"));
                     ps1.executeUpdate();}
                 }
             }
@@ -122,11 +123,25 @@ public class CartServices{
         ResultSet rst=stm.executeQuery(req);
 
         while (rst.next()){
-            ShoppingCart p=new ShoppingCart(rst.getString("name"),rst.getInt("quantity"),rst.getDouble("price"),rst.getDouble("total"));
+            ShoppingCart p=new ShoppingCart(rst.getInt("id"),rst.getString("name"),rst.getInt("quantity"),rst.getDouble("price"),rst.getDouble("total"));
             products.add(p);
         }
         return products;
 
+    }
+    public List<ShoppingCart> filtrerCart(String s) throws SQLException {
+        List<ShoppingCart> carts = new ArrayList<>();
+        String rq = "select * from cart where id like'%"+s+"%' or name like'%"+s+"%' or price like'%"+s+"%'  or quantity like'%"+s+"%' or total like'%"+s+"%'";
+
+        Statement st = cnx.createStatement();
+        ResultSet rst = st.executeQuery(rq);
+
+        while (rst.next()) {
+            ShoppingCart c=new ShoppingCart(rst.getInt("id"),rst.getString("name"),rst.getInt("quantity"),rst.getDouble("price"),rst.getDouble("total"));
+            carts.add(c);
+        }
+
+        return carts;
     }
 
 }

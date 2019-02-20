@@ -16,6 +16,14 @@ public class ShoppingCart {
         this.total = total;
     }
 
+    public ShoppingCart(int id, String nom, int quantity, Double price, Double total) {
+        this.id = id;
+        this.nom = nom;
+        this.quantity = quantity;
+        this.price = price;
+        this.total = total;
+    }
+
     public ShoppingCart(int id_u, int id_p, String nom, int quantity, Double price) {
         this.id_u = id_u;
         this.id_p = id_p;

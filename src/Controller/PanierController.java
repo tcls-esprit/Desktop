@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.*;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,8 +20,7 @@ import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class PanierController implements Initializable {
@@ -32,17 +32,22 @@ public class PanierController implements Initializable {
     @FXML
     private TableColumn table_prix;
     @FXML
-    private TableColumn table_quantity;
+    private TableColumn<ShoppingCart, Integer> table_quantity;
     @FXML
     private TableColumn table_total;
     @FXML
     private TableView<ShoppingCart> table_produit;
+    @FXML
+    private JFXTextField searchInput;
 
     public PanierController(){ cnx= ConnectionDB.getInstance().getConnection(); }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         table_produit.setEditable(true);
+        /*table_nom.setEditable(false);
+        table_total.setEditable(false);
+        table_prix.setEditable(false);*/
         table_nom.setCellFactory(TextFieldTableCell.forTableColumn());
         table_prix.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         table_total.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
@@ -81,5 +86,36 @@ public class PanierController implements Initializable {
 
     @FXML
     private void searchTable(KeyEvent keyEvent) {
+        String s = searchInput.getText();
+        ObservableList<ShoppingCart> data = null;
+        try {
+            data = FXCollections.observableArrayList(new CartServices().filtrerCart(s));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        initColumns();
+        table_produit.setItems(data);
+    }
+    @FXML
+    private void editableQuantity(TableColumn.CellEditEvent editedCell) throws SQLException {
+        ShoppingCart prod = table_produit.getSelectionModel().getSelectedItem();
+        //prod.setName(editedCell.getNewValue().toString());
+        int id = prod.getId();
+        //System.out.println(id);
+        Double d = prod.getPrice();
+        String req = "update cart set quantity=? where id=" + id;
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setString(1, editedCell.getNewValue().toString());
+        ps.executeUpdate();
+        String req1="select quantity from cart where id="+id;
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(req1);
+        if (rs.next()) {
+        String req2 = "update cart set total=? where id=" + id;
+        PreparedStatement ps1 = cnx.prepareStatement(req2);
+        ps1.setDouble(1, prod.getPrice()*rs.getInt("quantity"));
+        ps1.executeUpdate();
+        loadData();
+    }
     }
 }

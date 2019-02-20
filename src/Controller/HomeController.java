@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.CartServices;
 import Model.ConnectionDB;
 import Model.ProduitStock;
 import Model.StockServices;
@@ -136,6 +137,10 @@ public class HomeController  implements Initializable {
     }
 
     @FXML
-    private void addToPane(ActionEvent actionEvent) {
+    private void addToPane(ActionEvent actionEvent) throws SQLException {
+        ProduitStock prod = table_produit.getSelectionModel().getSelectedItem();
+        CartServices s = new CartServices();
+        int id = prod.getId();
+        s.fillCart(2,id,1);
     }
 }
