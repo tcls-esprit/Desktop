@@ -134,4 +134,8 @@ public class HomeController  implements Initializable {
         }
         mainPane.getChildren().setAll(pane);
     }
+
+    @FXML
+    private void addToPane(ActionEvent actionEvent) {
+    }
 }

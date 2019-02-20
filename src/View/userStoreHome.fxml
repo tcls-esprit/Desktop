@@ -76,7 +76,7 @@
          <contextMenu>
             <ContextMenu>
               <items>
-                <MenuItem mnemonicParsing="false" text="show" />
+                <MenuItem mnemonicParsing="false" onAction="#addToPane" text="Ajouter Panier" />
               </items>
             </ContextMenu>
          </contextMenu>
