@@ -118,4 +118,17 @@ public class PanierController implements Initializable {
         loadData();
     }
     }
+
+    @FXML
+    private void removeItem(ActionEvent actionEvent) {
+        ShoppingCart prod = table_produit.getSelectionModel().getSelectedItem();
+        CartServices s = new CartServices();
+        int id = prod.getId();
+        try {
+            s.removeCart(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        loadData();
+    }
 }
