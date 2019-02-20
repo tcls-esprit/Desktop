@@ -82,16 +82,12 @@ public class ShowController implements Initializable {
     }
 
     private void initColumns() {
-
-        //id_prod.setCellValueFactory(new PropertyValueFactory<>("id"));
         table_nom.setCellValueFactory(new PropertyValueFactory<>("name"));
         table_Quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         table_category.setCellValueFactory(new PropertyValueFactory<>("category"));
         table_prix.setCellValueFactory(new PropertyValueFactory<>("price"));
         table_description.setCellValueFactory(new PropertyValueFactory<>("description"));
         table_update.setCellValueFactory(new PropertyValueFactory<>("image"));
-        //colEdit.setCellFactory(cellFactory);
-
     }
 
     @FXML
