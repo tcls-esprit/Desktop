@@ -1,8 +1,6 @@
 package Controller;
 
-import Model.ConnectionDB;
-import Model.ProduitStock;
-import Model.StockServices;
+import Model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -38,7 +36,7 @@ public class PanierController implements Initializable {
     @FXML
     private TableColumn table_total;
     @FXML
-    private TableView<ProduitStock> table_produit;
+    private TableView<ShoppingCart> table_produit;
 
     public PanierController(){ cnx= ConnectionDB.getInstance().getConnection(); }
 
@@ -53,7 +51,7 @@ public class PanierController implements Initializable {
         loadData();
     }
     private void initColumns() {
-        table_nom.setCellValueFactory(new PropertyValueFactory<>("name"));
+        table_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         table_prix.setCellValueFactory(new PropertyValueFactory<>("price"));
         table_total.setCellValueFactory(new PropertyValueFactory<>("total"));
         table_quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
@@ -61,9 +59,9 @@ public class PanierController implements Initializable {
 
     }
     private void loadData() {
-        ObservableList<ProduitStock> data = null;
+        ObservableList<ShoppingCart> data = null;
         try {
-            data = FXCollections.observableArrayList(new StockServices().listerProduit());
+            data = FXCollections.observableArrayList(new CartServices().showCart(2));
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,14 +1,14 @@
-package Services;
+package Model;
 
-import Entities.ProduitStock;
-import Entities.ShoppingCart;
-import Utility.ConnectionDB;
+import Model.ProduitStock;
+import Model.ShoppingCart;
+import Model.ConnectionDB;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartServices implements CartGeneric<ShoppingCart> {
+public class CartServices{
 
     private Connection cnx;
 
@@ -16,7 +16,7 @@ public class CartServices implements CartGeneric<ShoppingCart> {
         cnx= ConnectionDB.getInstance().getConnection();
     }
 
-    @Override //if item exists it will update qty else it will add the item
+    //if item exists it will update qty else it will add the item
     public void fillCart(int id_u,int id_p, int quantity) throws SQLException {
 
         String req1="select * from Product where id="+id_p;
@@ -54,7 +54,7 @@ public class CartServices implements CartGeneric<ShoppingCart> {
         }
     }
 
-    @Override //remove whole item
+     //remove whole item
     public void removeCart(int id) throws SQLException {
         String req="Delete from cart where id="+id;
         PreparedStatement ps=cnx.prepareStatement(req);
@@ -68,7 +68,7 @@ public class CartServices implements CartGeneric<ShoppingCart> {
         s.executeUpdate(req3);
     }
 
-    @Override //update by removing by quantity
+     //update by removing by quantity
     public void removeQCart(int id, int quantity) throws SQLException {
         String req="select * from cart where id="+id;
         Statement st=cnx.createStatement();
@@ -83,7 +83,7 @@ public class CartServices implements CartGeneric<ShoppingCart> {
             System.out.println("Votre Produit a ete modifie avec succees");}
     }
 
-    @Override // direct update
+     // direct update
     public void update(int id, int quantity) throws SQLException {
         String req1="select * from cart where id="+id;
         Statement st1=cnx.createStatement();
@@ -98,7 +98,7 @@ public class CartServices implements CartGeneric<ShoppingCart> {
         System.out.println("Votre Produit a ete modifie avec succees");}
     }
 
-    @Override
+
     public void updateAdd(int id, int qty) throws SQLException {
         String req="select * from cart where id="+id;
         Statement stm=cnx.createStatement();
@@ -114,7 +114,7 @@ public class CartServices implements CartGeneric<ShoppingCart> {
         }
     }
 
-    @Override
+
     public List<ShoppingCart> showCart(int id_u) throws SQLException {
         List <ShoppingCart> products= new ArrayList<>();
         String req="SELECT * FROM Cart where id_u="+id_u;
