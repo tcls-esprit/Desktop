@@ -131,4 +131,12 @@ public class PanierController implements Initializable {
         }
         loadData();
     }
+
+    @FXML
+    private void payItems(ActionEvent actionEvent) throws SQLException {
+        CartServices c = new CartServices();
+        Double tot = c.showCart(2 ).stream().mapToDouble(e->e.getTotal()).sum();
+        System.out.println(tot);
+        //pay.chargeCreditCard(tot);
+    }
 }

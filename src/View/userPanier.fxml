@@ -81,5 +81,19 @@
          </contextMenu>
         </TableView>
         <JFXTextField fx:id="searchInput" layoutX="904.0" layoutY="46.0" onKeyReleased="#searchTable" promptText="Rechercher" />
+      <JFXButton layoutX="1098.0" layoutY="119.0" onAction="#payItems" prefHeight="50.0" prefWidth="91.0" text="Payer">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#6eb9db" />
+                  <Stop color="#6eb9db" offset="0.007246376811594203" />
+                  <Stop color="#bc579a" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>
