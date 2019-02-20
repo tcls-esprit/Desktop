@@ -6,7 +6,9 @@ import Model.StockServices;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -16,9 +18,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -47,6 +52,8 @@ public class HomeController  implements Initializable {
     private ImageView view;
     @FXML
     private JFXTextField searchInput;
+    @FXML
+    private AnchorPane mainPane;
 
     public HomeController(){cnx = ConnectionDB.getInstance().getConnection();}
 
@@ -115,5 +122,16 @@ public class HomeController  implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void loadPanier(ActionEvent actionEvent) {
+        Pane pane = null;
+        try {
+            pane = FXMLLoader.load(getClass().getResource("../View/userPanier.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mainPane.getChildren().setAll(pane);
     }
 }
