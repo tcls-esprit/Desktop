@@ -3,6 +3,7 @@ package Controller;
 import Model.ConnectionDB;
 import Model.ProduitStock;
 import Model.StockServices;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -44,6 +45,8 @@ public class HomeController  implements Initializable {
     private Connection cnx;
     @FXML
     private ImageView view;
+    @FXML
+    private JFXTextField searchInput;
 
     public HomeController(){cnx = ConnectionDB.getInstance().getConnection();}
 
@@ -81,6 +84,15 @@ public class HomeController  implements Initializable {
 
     @FXML
     private void searchTable(KeyEvent keyEvent) {
+        String s = searchInput.getText();
+        ObservableList<ProduitStock> data = null;
+        try {
+            data = FXCollections.observableArrayList(new StockServices().filtrerProduit(s));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        initColumns();
+        table_produit.setItems(data);
     }
 
     @FXML
@@ -96,7 +108,7 @@ public class HomeController  implements Initializable {
             ResultSet rs = st.executeQuery(req);
             if (rs.next()) {
                 String title = rs.getString("image");
-                System.out.println(title);
+               // System.out.println(title);
                 Image image = new Image("file:C:/xampp/htdocs/ImageStore/"+title);
                 view.setImage(image);
             }
