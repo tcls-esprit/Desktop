@@ -142,11 +142,12 @@ public class PanierController implements Initializable {
 
     @FXML
     private void payItems(ActionEvent actionEvent) throws SQLException {
+        PaymentServices pay = new PaymentServices();
         CartServices c = new CartServices();
         Double tot = c.showCart(2).stream().mapToDouble(e -> e.getTotal()).sum();
         System.out.println(tot);
-        //pay.chargeCreditCard(tot);
-        result.setText("Payment Accepted! =D");
+        pay.chargeCreditCard(tot);
+        result.setText("Payment Accepted! =D, Total of = "+tot+" DT");
         c.showCart(2).stream().forEach(e->{
             int id = e.getId();
             //System.out.println(id);
