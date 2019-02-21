@@ -114,7 +114,7 @@ public class ProduitController {
         fileName.setText(file.getName());
         if(file!=null)
         {
-            System.out.println("Chosen file : "+file.getName());
+            //System.out.println("Chosen file : "+file.getName());
             try {
                 Files.copy(file.toPath(),new File(path+"\\"+file.getName()).toPath());
             } catch (IOException e) {
