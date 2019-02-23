@@ -103,8 +103,8 @@ public class UserService implements Iservice<User> {
             ResultSet rs = s.executeQuery(req);
             if (rs.next()) {
                 String pw = rs.getString(1);
-                System.out.println(pw);
-                System.out.println(pwd);
+//                System.out.println(pw);
+//                System.out.println(pwd);
                 if(pw.equals(pwd))
                     return true;
                 else return false;

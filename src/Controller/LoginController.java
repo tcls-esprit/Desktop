@@ -56,8 +56,7 @@ public class LoginController implements Initializable {
         // TODO
     }   
     UserService us = new UserService() ;
-    public static User CurrentUser;
-    
+
     @FXML
     private void loginToMain(ActionEvent actionEvent) throws SQLException, IOException {
         if (user.getText().equals("")) {

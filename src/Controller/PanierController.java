@@ -18,6 +18,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,6 +46,10 @@ public class PanierController implements Initializable {
     private Label result;
     @FXML
     private Label total;
+    @FXML
+    private Label euro;
+    @FXML
+    private Label dinar;
 
     public PanierController() {
         cnx = ConnectionDB.getInstance().getConnection();
@@ -52,9 +58,9 @@ public class PanierController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         table_produit.setEditable(true);
-        /*table_nom.setEditable(false);
+        table_nom.setEditable(false);
         table_total.setEditable(false);
-        table_prix.setEditable(false);*/
+        table_prix.setEditable(false);
         table_nom.setCellFactory(TextFieldTableCell.forTableColumn());
         table_prix.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         table_total.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
@@ -62,7 +68,7 @@ public class PanierController implements Initializable {
         initColumns();
         try {
             loadData();
-        } catch (SQLException e) {
+        } catch (SQLException | JSONException e) {
             e.printStackTrace();
         }
     }
@@ -76,7 +82,7 @@ public class PanierController implements Initializable {
 
     }
 
-    private void loadData() throws SQLException {
+    private void loadData() throws SQLException, JSONException {
         ObservableList<ShoppingCart> data = null;
         try {
             data = FXCollections.observableArrayList(new CartServices().showCart(CurrentUser.id));
@@ -87,6 +93,13 @@ public class PanierController implements Initializable {
         CartServices c = new CartServices();
         Double tot = c.showCart(CurrentUser.id).stream().mapToDouble(e -> e.getTotal()).sum();
         total.setText(String.valueOf(tot));
+        JSONObject currency = CurrencyConversion.sendLiveRequest();
+        Double dinars = currency.getJSONObject("quotes").getDouble("USDTND")*tot;
+        Double euros = (currency.getJSONObject("quotes").getDouble("USDEUR")*tot);
+        euro.setText(String.format("%.3f",euros));
+        dinar.setText(String.format("%.3f",dinars));
+
+        //System.out.println(currency);
 
     }
 
@@ -115,7 +128,7 @@ public class PanierController implements Initializable {
     }
 
     @FXML
-    private void editableQuantity(TableColumn.CellEditEvent editedCell) throws SQLException {
+    private void editableQuantity(TableColumn.CellEditEvent editedCell) throws SQLException, JSONException {
         ShoppingCart prod = table_produit.getSelectionModel().getSelectedItem();
         //prod.setName(editedCell.getNewValue().toString());
         int id = prod.getId();
@@ -138,7 +151,7 @@ public class PanierController implements Initializable {
     }
 
     @FXML
-    private void removeItem(ActionEvent actionEvent) throws SQLException {
+    private void removeItem(ActionEvent actionEvent) throws SQLException, JSONException {
         ShoppingCart prod = table_produit.getSelectionModel().getSelectedItem();
         CartServices s = new CartServices();
         int id = prod.getId();
@@ -151,16 +164,15 @@ public class PanierController implements Initializable {
     }
 
     @FXML
-    private void payItems(ActionEvent actionEvent) throws SQLException {
+    private void payItems(ActionEvent actionEvent) throws SQLException, JSONException {
         PaymentServices pay = new PaymentServices();
         CartServices c = new CartServices();
         Double tot = c.showCart(CurrentUser.id).stream().mapToDouble(e -> e.getTotal()).sum();
-        System.out.println(tot);
+        //System.out.println(tot);
         pay.chargeCreditCard(tot);
-        result.setText("Payment Accepted! =D, Total of = "+tot+" DT");
+        result.setText("Payment Accepted! =D, Total of = "+tot+" USD");
         c.showCart(CurrentUser.id).stream().forEach(e->{
             int id = e.getId();
-            //System.out.println(id);
             String req1 = "delete from cart where id="+id;
             try {
                 Statement st = cnx.createStatement();

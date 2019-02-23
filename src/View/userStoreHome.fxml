@@ -82,7 +82,7 @@
          </contextMenu>
         </TableView>
         <JFXTextField fx:id="searchInput" layoutX="904.0" layoutY="46.0" onKeyReleased="#searchTable" promptText="Rechercher" />
-      <Pane layoutX="1087.0" layoutY="215.0" prefHeight="291.0" prefWidth="354.0" style="-fx-background-color: #35836d;">
+      <Pane layoutX="1087.0" layoutY="215.0" prefHeight="291.0" prefWidth="354.0">
          <children>
             <ImageView fx:id="view" fitHeight="266.0" fitWidth="328.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
          </children>
