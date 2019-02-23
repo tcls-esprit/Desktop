@@ -61,8 +61,9 @@ public class PaymentServices {
     }*/
 
 
-    public void chargeCreditCard(Double OrderBill) {
+    public Charge chargeCreditCard(Double OrderBill) {
 // Stripe requires the charge amount to be in cents
+        Charge x = null;
         int Bill = (int) (100 * OrderBill);
 
         Map<String, Object> chargeParams = new HashMap<>();
@@ -73,7 +74,7 @@ public class PaymentServices {
 
         try {
             // Submit charge to credit card
-            /*Charge charge =*/ Charge.create(chargeParams);
+            /*Charge charge =*/ x =Charge.create(chargeParams);
             //System.out.println(charge);
         } catch (CardException e) {
             // Transaction was declined
@@ -91,6 +92,6 @@ public class PaymentServices {
             // Something else happened unrelated to Stripe
         }
         System.out.println("Yay! your payment accepted, enjoy the item!");
+        return x;
     }
-
 }

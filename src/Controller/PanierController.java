@@ -2,6 +2,7 @@ package Controller;
 
 import Model.*;
 import com.jfoenix.controls.JFXTextField;
+import com.stripe.model.Charge;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +25,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class PanierController implements Initializable {
@@ -50,6 +54,12 @@ public class PanierController implements Initializable {
     private Label euro;
     @FXML
     private Label dinar;
+    @FXML
+    private Label transactionDate;
+    @FXML
+    private Label lastName;
+    @FXML
+    private Label name;
 
     public PanierController() {
         cnx = ConnectionDB.getInstance().getConnection();
@@ -94,10 +104,12 @@ public class PanierController implements Initializable {
         Double tot = c.showCart(CurrentUser.id).stream().mapToDouble(e -> e.getTotal()).sum();
         total.setText(String.valueOf(tot));
         JSONObject currency = CurrencyConversion.sendLiveRequest();
-        Double dinars = currency.getJSONObject("quotes").getDouble("USDTND")*tot;
-        Double euros = (currency.getJSONObject("quotes").getDouble("USDEUR")*tot);
-        euro.setText(String.format("%.3f",euros));
-        dinar.setText(String.format("%.3f",dinars));
+        Double dinars = currency.getJSONObject("quotes").getDouble("USDTND") * tot;
+        Double euros = (currency.getJSONObject("quotes").getDouble("USDEUR") * tot);
+        euro.setText(String.format("%.3f", euros));
+        dinar.setText(String.format("%.3f", dinars));
+        name.setText(CurrentUser.nom);
+        lastName.setText(CurrentUser.prenom);
 
         //System.out.println(currency);
 
@@ -169,18 +181,34 @@ public class PanierController implements Initializable {
         CartServices c = new CartServices();
         Double tot = c.showCart(CurrentUser.id).stream().mapToDouble(e -> e.getTotal()).sum();
         //System.out.println(tot);
-        pay.chargeCreditCard(tot);
-        result.setText("Payment Accepted! =D, Total of = "+tot+" USD");
-        c.showCart(CurrentUser.id).stream().forEach(e->{
-            int id = e.getId();
-            String req1 = "delete from cart where id="+id;
-            try {
-                Statement st = cnx.createStatement();
-                st.executeUpdate(req1);
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-        });
-        loadData();
+        if(!tot.equals(0.0)){
+        Charge y = pay.chargeCreditCard(tot);
+
+        Long x = y.getCreated();
+        //System.out.println(x);
+        Date timeStampDate = new Date((long) (x * 1000));
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss a");
+        String formattedDate = dateFormat.format(timeStampDate);
+        transactionDate.setText(formattedDate);
     }
+        result.setText("Payment Accepted! =D, Total of = "+tot +" USD");
+        c.showCart(CurrentUser.id).
+
+    stream().
+
+    forEach(e ->
+
+    {
+        int id = e.getId();
+        String req1 = "delete from cart where id=" + id;
+        try {
+            Statement st = cnx.createStatement();
+            st.executeUpdate(req1);
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+    });
+
+    loadData();
+}
 }

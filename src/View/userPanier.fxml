@@ -18,9 +18,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="1441.0" style="-fx-background-color: #fafafa;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PanierController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="1441.0" style="-fx-background-color: #e0f2f1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PanierController">
     <children>
-        <Pane prefHeight="698.0" prefWidth="180.0" style="-fx-background-color: #4db6ac;">
+        <Pane layoutY="50.0" prefHeight="648.0" prefWidth="180.0" style="-fx-background-color: #b2dfdb;">
             <effect>
                 <DropShadow color="#00000057" />
             </effect>
@@ -67,9 +67,9 @@
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <TableView fx:id="table_produit" layoutX="246.0" layoutY="119.0" prefHeight="535.0" prefWidth="829.0">
+        <TableView fx:id="table_produit" layoutX="246.0" layoutY="119.0" prefHeight="535.0" prefWidth="829.0" stylesheets="@css/jfx-table-view.css">
             <columns>
-                <TableColumn fx:id="table_nom" prefWidth="244.0" text="Nom" />
+                <TableColumn fx:id="table_nom" prefWidth="244.0" style="-fx-text-fill: red;" text="Nom" />
                 <TableColumn fx:id="table_prix" text="Prix" />
                 <TableColumn fx:id="table_quantity" onEditCommit="#editableQuantity" prefWidth="297.0" text="Quantity" />
                 <TableColumn fx:id="table_total" prefWidth="82.0" text="Total" />
@@ -147,5 +147,25 @@
             </HBox>
          </children>
       </VBox>
+      <Label fx:id="transactionDate" layoutX="1144.0" layoutY="571.0" prefHeight="31.0" prefWidth="221.0" />
+      <Pane layoutX="-6.0" layoutY="-1.0" prefHeight="50.0" prefWidth="1448.0" style="-fx-background-color: #4db6ac;">
+         <children>
+            <Label fx:id="name" alignment="CENTER" layoutX="1094.0" layoutY="15.0" prefHeight="27.0" prefWidth="101.0" textFill="#e4e4e4">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lastName" alignment="CENTER" layoutX="1208.0" layoutY="15.0" prefHeight="27.0" prefWidth="115.0" textFill="#e4e4e4">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="11.0" text="Cite De La Culture" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
     </children>
 </AnchorPane>
