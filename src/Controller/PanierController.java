@@ -42,6 +42,8 @@ public class PanierController implements Initializable {
     private JFXTextField searchInput;
     @FXML
     private Label result;
+    @FXML
+    private Label total;
 
     public PanierController() {
         cnx = ConnectionDB.getInstance().getConnection();
@@ -58,7 +60,11 @@ public class PanierController implements Initializable {
         table_total.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         table_quantity.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         initColumns();
-        loadData();
+        try {
+            loadData();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initColumns() {
@@ -70,7 +76,7 @@ public class PanierController implements Initializable {
 
     }
 
-    private void loadData() {
+    private void loadData() throws SQLException {
         ObservableList<ShoppingCart> data = null;
         try {
             data = FXCollections.observableArrayList(new CartServices().showCart(CurrentUser.id));
@@ -78,6 +84,10 @@ public class PanierController implements Initializable {
             e.printStackTrace();
         }
         table_produit.setItems(data);
+        CartServices c = new CartServices();
+        Double tot = c.showCart(CurrentUser.id).stream().mapToDouble(e -> e.getTotal()).sum();
+        total.setText(String.valueOf(tot));
+
     }
 
     @FXML
@@ -128,7 +138,7 @@ public class PanierController implements Initializable {
     }
 
     @FXML
-    private void removeItem(ActionEvent actionEvent) {
+    private void removeItem(ActionEvent actionEvent) throws SQLException {
         ShoppingCart prod = table_produit.getSelectionModel().getSelectedItem();
         CartServices s = new CartServices();
         int id = prod.getId();
