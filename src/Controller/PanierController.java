@@ -73,7 +73,7 @@ public class PanierController implements Initializable {
     private void loadData() {
         ObservableList<ShoppingCart> data = null;
         try {
-            data = FXCollections.observableArrayList(new CartServices().showCart(2));
+            data = FXCollections.observableArrayList(new CartServices().showCart(CurrentUser.id));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -144,11 +144,11 @@ public class PanierController implements Initializable {
     private void payItems(ActionEvent actionEvent) throws SQLException {
         PaymentServices pay = new PaymentServices();
         CartServices c = new CartServices();
-        Double tot = c.showCart(2).stream().mapToDouble(e -> e.getTotal()).sum();
+        Double tot = c.showCart(CurrentUser.id).stream().mapToDouble(e -> e.getTotal()).sum();
         System.out.println(tot);
         pay.chargeCreditCard(tot);
         result.setText("Payment Accepted! =D, Total of = "+tot+" DT");
-        c.showCart(2).stream().forEach(e->{
+        c.showCart(CurrentUser.id).stream().forEach(e->{
             int id = e.getId();
             //System.out.println(id);
             String req1 = "delete from cart where id="+id;

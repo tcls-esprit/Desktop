@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gui;
+package Controller;
 
-import Entities.TypeUser;
-import Entities.User;
-import Services.UserService;
+
+import Model.CurrentUser;
+import Model.TypeUser;
+import Model.User;
+import Model.UserService;
+import com.jfoenix.controls.JFXTextField;
 import com.sun.prism.shader.FillCircle_Color_AlphaTest_Loader;
 import java.io.IOException;
 import java.net.URL;
@@ -33,18 +36,17 @@ import javafx.stage.StageStyle;
 /**
  * FXML Controller class
  *
- * @author asus
+ * @author Khaled
  */
 public class LoginController implements Initializable {
 
+
     @FXML
-    private TextField txt_login;
+    private Label verif;
     @FXML
-    private PasswordField txt_password;
+    private JFXTextField user;
     @FXML
-    private Label message;
-    @FXML
-    private Label lab;
+    private JFXTextField pwd;
 
     /**
      * Initializes the controller class.
@@ -53,33 +55,32 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }   
-    UserService us = new UserService() ; 
-
+    UserService us = new UserService() ;
+    public static User CurrentUser;
+    
     @FXML
-    private void login(ActionEvent event) throws SQLException {
-        if (us.isLogin(txt_login.getText(), txt_password.getText()))
-      {
-       if (UserService.LoggedUser.getType().equals(TypeUser.Admin))  
-       {  
-           System.out.println("hhhhhhhhhhhh");
-       }
-       else if (UserService.LoggedUser.getType().equals(TypeUser.SimpleUser))  
-       {
-           System.out.println("hhh");
-       }
-       else {
-           System.out.println("h"); 
-           //khaled
-       }
-      }
-        else 
-        {
-         lab.setText("UserName ou Password Invalid");
-         lab.setTextFill(Color.RED);
-        }
-            
-    }
+    private void loginToMain(ActionEvent actionEvent) throws SQLException, IOException {
+        if (user.getText().equals("")) {
+            verif.setText("veuillez saisir votre email");
+        } else if (pwd.getText().equals("")) {
+            verif.setText("veuillez saisir votre mot de passe");
+        } else if (!us.login(user.getText(), pwd.getText())) {
+            verif.setText("cordonnées invalides");
+        } else {
+            CurrentUser cu = new CurrentUser(us.getUserByEmail(user.getText()));
 
+            if (cu.type.equals(TypeUser.Gerant)) {
+                Parent root = FXMLLoader.load(getClass().getResource("../View/userStoreHome.fxml"));
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setTitle("espace gerant");
+                stage.setScene(scene);
+                stage.show();
+                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+            }
+        }
+    }
+    
     @FXML
     private void signup(ActionEvent event) throws IOException {
             Stage stage = new Stage();
@@ -91,12 +92,8 @@ public class LoginController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
-    @FXML
-    private void close(MouseEvent event) {
-        
-    }
-   
-
     
+    @FXML
+    private void closeProgram(ActionEvent actionEvent) {
+    }
 }

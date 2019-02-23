@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.CartServices;
-import Model.ConnectionDB;
-import Model.ProduitStock;
-import Model.StockServices;
+import Model.*;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -141,6 +138,6 @@ public class HomeController  implements Initializable {
         ProduitStock prod = table_produit.getSelectionModel().getSelectedItem();
         CartServices s = new CartServices();
         int id = prod.getId();
-        s.fillCart(2,id,1);
+        s.fillCart(CurrentUser.id,id,1);
     }
 }

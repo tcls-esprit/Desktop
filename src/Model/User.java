@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entities;
+package Model;
 
-import Entities.Gender;
-import Entities.TypeUser;
 import java.util.Date;
 
 /**
  *
- * @author asus
+ * @author Khaled
  */
 public class User {
     private int userId ; 
@@ -19,14 +17,14 @@ public class User {
     private String prenom ; 
     private String email ; 
     private String password ; 
-    private Date birthDate ; 
+    private String birthDate ;
     private Gender Gender ; 
-    private int numero ; 
+    private String numero ;
     private int cin ; 
     private TypeUser Type ; 
-    private String username ; 
 
-    public User(int userId, String nom, String prenom, String email, String password, Date birthDate, Gender Gender, int numero, int cin, TypeUser Type,String username) {
+
+    public User(int userId, String nom, String prenom, String email, String password, String birthDate, Gender Gender, String numero, int cin, TypeUser Type) {
         this.userId = userId;
         this.nom = nom;
         this.prenom = prenom;
@@ -37,10 +35,10 @@ public class User {
         this.numero = numero;
         this.cin = cin;
         this.Type = Type;
-        this.username = username ; 
+
     }
      public User() {} 
-    public User(String nom, String prenom, String email, String password, Date birthDate, Gender Gender, int numero, int cin, TypeUser Type, String username) {
+    public User(String nom, String prenom, String email, String password, String birthDate, Gender Gender, String numero, int cin, TypeUser Type) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -50,10 +48,10 @@ public class User {
         this.numero = numero;
         this.cin = cin;
         this.Type = Type;
-        this.username = username;
+
     }
 
-    public User( String nom, String prenom, String email, String password, Date birthDate, TypeUser Type,String username) {
+    public User( String nom, String prenom, String email, String password, String birthDate, TypeUser Type) {
         this.userId = userId;
         this.nom = nom;
         this.prenom = prenom;
@@ -61,12 +59,12 @@ public class User {
         this.password = password;
         this.birthDate = birthDate;
         this.Type = Type;
-        this.username = username ; 
+
     }
 
     @Override
     public String toString() {
-        return "User{"+"username="+username + "userId=" + userId + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", password=" + password + ", birthDate=" + birthDate + ", Gender=" + Gender + ", numero=" + numero + ", cin=" + cin + ", Type=" + Type + '}';
+        return "User{"+"username="+ "userId=" + userId + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", password=" + password + ", birthDate=" + birthDate + ", Gender=" + Gender + ", numero=" + numero + ", cin=" + cin + ", Type=" + Type + '}';
     }
 
     public int getUserId() {
@@ -75,14 +73,6 @@ public class User {
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getNom() {
@@ -117,11 +107,11 @@ public class User {
         this.password = password;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -133,11 +123,11 @@ public class User {
         this.Gender = Gender;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
