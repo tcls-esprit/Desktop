@@ -18,7 +18,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="1441.0" style="-fx-background-color: #e0f2f1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PanierController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="1441.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PanierController">
     <children>
         <Pane layoutY="50.0" prefHeight="648.0" prefWidth="180.0" style="-fx-background-color: #b2dfdb;">
             <effect>
@@ -62,12 +62,12 @@
                 </JFXButton>
             </children>
         </Pane>
-        <Label layoutX="251.0" layoutY="44.0" text="Ma Panier" textFill="#35836d">
+        <Label layoutX="251.0" layoutY="64.0" text="Ma Panier" textFill="#35836d">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <TableView fx:id="table_produit" layoutX="246.0" layoutY="119.0" prefHeight="535.0" prefWidth="829.0" stylesheets="@css/jfx-table-view.css">
+        <TableView fx:id="table_produit" layoutX="246.0" layoutY="155.0" prefHeight="535.0" prefWidth="829.0" style="-fx-text-fill: green;" stylesheets="@css/jfx-table-view.css">
             <columns>
                 <TableColumn fx:id="table_nom" prefWidth="244.0" style="-fx-text-fill: red;" text="Nom" />
                 <TableColumn fx:id="table_prix" text="Prix" />
@@ -82,7 +82,7 @@
             </ContextMenu>
          </contextMenu>
         </TableView>
-        <JFXTextField fx:id="searchInput" layoutX="904.0" layoutY="46.0" onKeyReleased="#searchTable" promptText="Rechercher" />
+        <JFXTextField fx:id="searchInput" layoutX="904.0" layoutY="66.0" onKeyReleased="#searchTable" promptText="Rechercher" />
       <JFXButton layoutX="1098.0" layoutY="119.0" onAction="#payItems" prefHeight="50.0" prefWidth="91.0" text="Payer">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -98,21 +98,21 @@
          </font>
       </JFXButton>
       <Label fx:id="result" alignment="CENTER" layoutX="1075.0" layoutY="387.0" prefHeight="35.0" prefWidth="349.0" />
-      <VBox layoutX="1098.0" layoutY="197.0" prefHeight="174.0" prefWidth="210.0" style="-fx-border-color: black;">
+      <VBox layoutX="1089.0" layoutY="200.0" prefHeight="174.0" prefWidth="338.0" style="-fx-border-color: black;">
          <children>
             <HBox prefHeight="56.0" prefWidth="211.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="108.0" style="-fx-border-color: black;" text="Total (USD)">
+                  <Label alignment="CENTER" prefHeight="56.0" prefWidth="285.0" style="-fx-border-color: black;" text="Total (USD)">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="total" alignment="CENTER" prefHeight="56.0" prefWidth="114.0" style="-fx-border-color: black;" />
+                  <Label fx:id="total" alignment="CENTER" prefHeight="56.0" prefWidth="229.0" style="-fx-border-color: black;" />
                </children>
             </HBox>
             <HBox prefHeight="58.0" prefWidth="211.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="58.0" prefWidth="113.0" style="-fx-border-color: black;" text="En Euros">
+                  <Label fx:id="imgeuro" alignment="CENTER" prefHeight="58.0" prefWidth="209.0" style="-fx-border-color: black;" text="Total En Euros">
                      <textFill>
                         <LinearGradient endX="1.0" endY="0.9029126213592233" startX="0.6359223300970874">
                            <stops>
@@ -125,11 +125,11 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="euro" alignment="CENTER" prefHeight="58.0" prefWidth="119.0" style="-fx-border-color: black;" />
+                  <Label fx:id="euro" alignment="CENTER" prefHeight="58.0" prefWidth="153.0" style="-fx-border-color: black;" />
                </children></HBox>
             <HBox prefHeight="58.0" prefWidth="211.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="58.0" prefWidth="110.0" style="-fx-border-color: black;" text="En Dinars">
+                  <Label fx:id="imgdinar" alignment="CENTER" prefHeight="58.0" prefWidth="284.0" style="-fx-border-color: black;" text="Total En Dinars">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -142,20 +142,19 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="dinar" alignment="CENTER" prefHeight="58.0" prefWidth="116.0" style="-fx-border-color: black;" />
+                  <Label fx:id="dinar" alignment="CENTER" prefHeight="58.0" prefWidth="228.0" style="-fx-border-color: black;" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <Label fx:id="transactionDate" layoutX="1144.0" layoutY="571.0" prefHeight="31.0" prefWidth="221.0" />
       <Pane layoutX="-6.0" layoutY="-1.0" prefHeight="50.0" prefWidth="1448.0" style="-fx-background-color: #4db6ac;">
          <children>
-            <Label fx:id="name" alignment="CENTER" layoutX="1094.0" layoutY="15.0" prefHeight="27.0" prefWidth="101.0" textFill="#e4e4e4">
+            <Label fx:id="name" alignment="CENTER" layoutX="1116.0" layoutY="13.0" prefHeight="27.0" prefWidth="101.0" textFill="#e4e4e4">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lastName" alignment="CENTER" layoutX="1208.0" layoutY="15.0" prefHeight="27.0" prefWidth="115.0" textFill="#e4e4e4">
+            <Label fx:id="lastName" alignment="CENTER" layoutX="1230.0" layoutY="13.0" prefHeight="27.0" prefWidth="115.0" textFill="#e4e4e4">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -167,5 +166,17 @@
             </Label>
          </children>
       </Pane>
+      <VBox layoutX="1087.0" layoutY="516.0" prefHeight="174.0" prefWidth="340.0" style="-fx-border-color: black;">
+         <children>
+            <Label alignment="CENTER" prefHeight="56.0" prefWidth="343.0" style="-fx-border-color: black;" text="Live ExchangeRate">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="liveEuro" alignment="CENTER" prefHeight="58.0" prefWidth="344.0" style="-fx-border-color: black;" />
+            <Label fx:id="liveDinar" alignment="CENTER" prefHeight="58.0" prefWidth="344.0" style="-fx-border-color: black;" />
+         </children>
+      </VBox>
+      <Label fx:id="transactionDate" layoutX="1087.0" layoutY="448.0" prefHeight="58.0" prefWidth="341.0" style="-fx-border-color: black;" />
     </children>
 </AnchorPane>

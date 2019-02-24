@@ -14,6 +14,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -60,6 +62,14 @@ public class PanierController implements Initializable {
     private Label lastName;
     @FXML
     private Label name;
+    @FXML
+    private Label liveEuro;
+    @FXML
+    private Label liveDinar;
+    @FXML
+    private Label imgdinar;
+    @FXML
+    private Label imgeuro;
 
     public PanierController() {
         cnx = ConnectionDB.getInstance().getConnection();
@@ -81,6 +91,10 @@ public class PanierController implements Initializable {
         } catch (SQLException | JSONException e) {
             e.printStackTrace();
         }
+        Image image = new Image("file:C:\\Users\\PlusUltra\\Documents\\GitHub\\Desktop\\src\\View\\img\\icons8-tunisia-48.png");
+        imgdinar.setGraphic(new ImageView(image));
+        Image image1 = new Image("file:C:\\Users\\PlusUltra\\Documents\\GitHub\\Desktop\\src\\View\\img\\europe-48.png");
+        imgeuro.setGraphic(new ImageView(image1));
     }
 
     private void initColumns() {
@@ -110,6 +124,13 @@ public class PanierController implements Initializable {
         dinar.setText(String.format("%.3f", dinars));
         name.setText(CurrentUser.nom);
         lastName.setText(CurrentUser.prenom);
+        Date timeStampDate = new Date((long)(currency.getLong("timestamp")*1000));
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String formattedDate = dateFormat.format(timeStampDate);
+        liveEuro.setText("1 " + currency.getString("source") + " in EUR : " + currency.getJSONObject("quotes").getDouble("USDEUR") + " (Date: " + formattedDate + ")");
+        liveDinar.setText("1 " + currency.getString("source") + " in TND : " + currency.getJSONObject("quotes").getDouble("USDTND") + " (Date: " + formattedDate + ")");
+
+
 
         //System.out.println(currency);
 
