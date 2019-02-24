@@ -70,6 +70,12 @@ public class PanierController implements Initializable {
     private Label imgdinar;
     @FXML
     private Label imgeuro;
+    @FXML
+    private Label rateLive;
+    @FXML
+    private Label imgusd;
+    @FXML
+    private Label basket;
 
     public PanierController() {
         cnx = ConnectionDB.getInstance().getConnection();
@@ -91,10 +97,18 @@ public class PanierController implements Initializable {
         } catch (SQLException | JSONException e) {
             e.printStackTrace();
         }
-        Image image = new Image("file:C:\\Users\\PlusUltra\\Documents\\GitHub\\Desktop\\src\\View\\img\\icons8-tunisia-48.png");
+        String path= "C:\\Users\\PlusUltra\\Documents\\GitHub\\Desktop\\src\\View\\img\\";
+        Image image = new Image("file:"+path+"icons8-tunisia-48.png");
         imgdinar.setGraphic(new ImageView(image));
         Image image1 = new Image("file:C:\\Users\\PlusUltra\\Documents\\GitHub\\Desktop\\src\\View\\img\\europe-48.png");
         imgeuro.setGraphic(new ImageView(image1));
+        Image usa = new Image("file:C:\\Users\\PlusUltra\\Documents\\GitHub\\Desktop\\src\\View\\img\\shop.png");
+        imgusd.setGraphic(new ImageView(usa));
+        Image live = new Image("file:C:\\Users\\PlusUltra\\Documents\\GitHub\\Desktop\\src\\View\\img\\exchange.png");
+        rateLive.setGraphic(new ImageView(live));
+        Image Basket = new Image("file:"+path+"bag.png");
+        basket.setGraphic(new ImageView(Basket));
+
     }
 
     private void initColumns() {
@@ -232,4 +246,15 @@ public class PanierController implements Initializable {
 
     loadData();
 }
+
+    @FXML
+    private void loadHistory(ActionEvent actionEvent) {
+        Pane pane = null;
+        try {
+            pane = FXMLLoader.load(getClass().getResource("../View/History.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mainPane.getChildren().setAll(pane);
+    }
 }

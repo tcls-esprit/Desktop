@@ -140,4 +140,15 @@ public class HomeController  implements Initializable {
         int id = prod.getId();
         s.fillCart(CurrentUser.id,id,1);
     }
+
+    @FXML
+    private void loadHistory(ActionEvent actionEvent) {
+        Pane pane = null;
+        try {
+            pane = FXMLLoader.load(getClass().getResource("../View/History.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mainPane.getChildren().setAll(pane);
+    }
 }
