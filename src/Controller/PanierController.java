@@ -1,14 +1,20 @@
 package Controller;
 
 import Model.*;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.stripe.model.Charge;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -19,6 +25,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import org.json.JSONException;
@@ -76,6 +84,10 @@ public class PanierController implements Initializable {
     private Label imgusd;
     @FXML
     private Label basket;
+    @FXML
+    private JFXButton cashOut;
+    @FXML
+    private JFXButton settings;
 
     public PanierController() {
         cnx = ConnectionDB.getInstance().getConnection();
@@ -108,6 +120,11 @@ public class PanierController implements Initializable {
         rateLive.setGraphic(new ImageView(live));
         Image Basket = new Image("file:"+path+"bag.png");
         basket.setGraphic(new ImageView(Basket));
+        Image pay = new Image("file:"+path+"pay.png");
+        cashOut.setGraphic(new ImageView(pay));
+        Image log = new Image("file:"+path+"settings.png");
+        settings.setGraphic(new ImageView(log));
+
 
     }
 
@@ -253,7 +270,7 @@ public class PanierController implements Initializable {
 
     private void addToHistroy(Charge X) throws SQLException {
         System.out.println(X);
-        String id = X.getId();
+        String id = X.getBalanceTransaction();
         Double price =X.getAmount().doubleValue()/100;
         Long x = X.getCreated();
         Date timeStampDate = new Date((long) (x * 1000));
@@ -267,6 +284,20 @@ public class PanierController implements Initializable {
         ps.setString(3,formattedDate);
         ps.setInt(4,CurrentUser.id);
         ps.executeUpdate();
+
+    }
+
+    @FXML
+    private void logOut(Event event) throws IOException {
+
+        cashOut.getScene().getWindow().hide();
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../View/Login.fxml"));
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+
 
     }
 }

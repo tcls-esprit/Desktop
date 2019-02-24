@@ -18,6 +18,10 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+
         launch(args);
+        //User khaled = new User("khaled","saidi","khaledtsu@gmail.com","loli12-*","1995-08-03",Gender.Male,"23375472",13626155,TypeUser.Gerant);
+        //UserService x = new UserService();
+        //x.insert(khaled);
     }
 }

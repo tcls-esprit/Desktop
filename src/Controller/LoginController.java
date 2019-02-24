@@ -10,6 +10,7 @@ import Model.CurrentUser;
 import Model.TypeUser;
 import Model.User;
 import Model.UserService;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.sun.prism.shader.FillCircle_Color_AlphaTest_Loader;
 import java.io.IOException;
@@ -46,7 +47,7 @@ public class LoginController implements Initializable {
     @FXML
     private JFXTextField user;
     @FXML
-    private JFXTextField pwd;
+    private JFXPasswordField pwdd;
 
     /**
      * Initializes the controller class.
@@ -61,9 +62,9 @@ public class LoginController implements Initializable {
     private void loginToMain(ActionEvent actionEvent) throws SQLException, IOException {
         if (user.getText().equals("")) {
             verif.setText("veuillez saisir votre email");
-        } else if (pwd.getText().equals("")) {
+        } else if (pwdd.getText().equals("")) {
             verif.setText("veuillez saisir votre mot de passe");
-        } else if (!us.login(user.getText(), pwd.getText())) {
+        } else if (!us.login(user.getText(), pwdd.getText())) {
             verif.setText("cordonnées invalides");
         } else {
             CurrentUser cu = new CurrentUser(us.getUserByEmail(user.getText()));

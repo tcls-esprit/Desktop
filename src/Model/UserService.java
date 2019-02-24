@@ -5,7 +5,12 @@
  */
 package Model;
 
+import Model.Utility.BCrypt;
+
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -29,14 +34,21 @@ public class UserService implements Iservice<User> {
     @Override
     public void insert(User t) {
         try {
-
-            String requete = "insert into user (nom,prenom,email,pwd,ddn,sexe,tel,ci,type,username) values (?,?,?,?,?,?,?,?,?,?) ";
+            String hashedpw = BCrypt.hashpw(t.getPassword(), BCrypt.gensalt(12));
+            String requete = "insert into user (nom,prenom,email,pwd,ddn,sexe,tel,ci,type) values (?,?,?,?,?,?,?,?,?) ";
             pst = cnx.prepareStatement(requete);
             pst.setString(1, t.getNom());
             pst.setString(2, t.getPrenom());
             pst.setString(3, t.getEmail());
-            pst.setString(4, t.getPassword());
-            pst.setString(5, t.getBirthDate());
+            pst.setString(4, hashedpw);
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                java.util.Date myDate = formatter.parse(t.getBirthDate());
+                System.out.println(myDate);
+                pst.setDate(5, new java.sql.Date(myDate.getTime()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             pst.setString(6, t.getGender().name());
             pst.setString(7, t.getNumero());
             pst.setInt(8, t.getCin());
@@ -103,13 +115,11 @@ public class UserService implements Iservice<User> {
             ResultSet rs = s.executeQuery(req);
             if (rs.next()) {
                 String pw = rs.getString(1);
-//                System.out.println(pw);
-//                System.out.println(pwd);
-                if(pw.equals(pwd))
+                return (BCrypt.checkpw(pwd, pw));
+                /*if(pw.equals(pwd))
                     return true;
-                else return false;
-            }
-            else
+                else return false;*/
+            } else
                 return false;
         }
         else

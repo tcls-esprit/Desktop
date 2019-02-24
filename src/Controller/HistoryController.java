@@ -33,7 +33,7 @@ public class HistoryController implements Initializable {
     private TableColumn<History,Double> table_amount;
     @FXML
     private TableColumn<History,String> table_date;
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         table_trx.setCellFactory(TextFieldTableCell.forTableColumn());

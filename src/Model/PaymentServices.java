@@ -74,7 +74,8 @@ public class PaymentServices {
 
         try {
             // Submit charge to credit card
-            /*Charge charge =*/ x =Charge.create(chargeParams);
+            /*Charge charge =*/
+            x =Charge.create(chargeParams);
             //System.out.println(charge);
         } catch (CardException e) {
             // Transaction was declined

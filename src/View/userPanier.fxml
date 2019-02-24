@@ -62,7 +62,7 @@
                 </JFXButton>
             </children>
         </Pane>
-        <Label fx:id="basket" layoutX="251.0" layoutY="50.0" text="Ma Panier" textFill="#35836d">
+        <Label fx:id="basket" layoutX="251.0" layoutY="50.0" text="Mon Panier" textFill="#35836d">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
@@ -83,7 +83,7 @@
          </contextMenu>
         </TableView>
         <JFXTextField fx:id="searchInput" layoutX="904.0" layoutY="66.0" onKeyReleased="#searchTable" promptText="Rechercher" />
-      <JFXButton layoutX="1098.0" layoutY="119.0" onAction="#payItems" prefHeight="50.0" prefWidth="91.0" text="Payer">
+      <JFXButton fx:id="cashOut" layoutX="1098.0" layoutY="119.0" onAction="#payItems" prefHeight="50.0" prefWidth="152.0" text="Payer">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -97,7 +97,15 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <Label fx:id="result" alignment="CENTER" layoutX="1075.0" layoutY="387.0" prefHeight="35.0" prefWidth="349.0" />
+      <Label fx:id="result" alignment="CENTER" layoutX="1075.0" layoutY="387.0" prefHeight="35.0" prefWidth="349.0">
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </Label>
       <VBox layoutX="1089.0" layoutY="200.0" prefHeight="174.0" prefWidth="338.0" style="-fx-border-color: black;">
          <children>
             <HBox prefHeight="56.0" prefWidth="211.0">
@@ -164,6 +172,15 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
+            <JFXButton fx:id="settings" layoutX="1332.0" layoutY="3.0">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="home" />
+                        <MenuItem mnemonicParsing="false" onAction="#logOut" text="logout" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu></JFXButton>
          </children>
       </Pane>
       <VBox layoutX="1087.0" layoutY="516.0" prefHeight="174.0" prefWidth="340.0" style="-fx-border-color: black;">
