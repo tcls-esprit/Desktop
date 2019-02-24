@@ -144,8 +144,6 @@ public class PanierController implements Initializable {
         liveEuro.setText("1 " + currency.getString("source") + " in EUR : " + currency.getJSONObject("quotes").getDouble("USDEUR") + " (Date: " + formattedDate + ")");
         liveDinar.setText("1 " + currency.getString("source") + " in TND : " + currency.getJSONObject("quotes").getDouble("USDTND") + " (Date: " + formattedDate + ")");
 
-
-
         //System.out.println(currency);
 
     }
@@ -218,15 +216,10 @@ public class PanierController implements Initializable {
         //System.out.println(tot);
         if(!tot.equals(0.0)){
         Charge y = pay.chargeCreditCard(tot);
-
-        Long x = y.getCreated();
-        //System.out.println(x);
-        Date timeStampDate = new Date((long) (x * 1000));
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss a");
-        String formattedDate = dateFormat.format(timeStampDate);
-        transactionDate.setText(formattedDate);
-    }
         result.setText("Payment Accepted! =D, Total of = "+tot +" USD");
+        addToHistroy(y);
+        }
+
         c.showCart(CurrentUser.id).
 
     stream().
@@ -256,5 +249,24 @@ public class PanierController implements Initializable {
             e.printStackTrace();
         }
         mainPane.getChildren().setAll(pane);
+    }
+
+    private void addToHistroy(Charge X) throws SQLException {
+        System.out.println(X);
+        String id = X.getId();
+        Double price =X.getAmount().doubleValue()/100;
+        Long x = X.getCreated();
+        Date timeStampDate = new Date((long) (x * 1000));
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss a");
+        String formattedDate = dateFormat.format(timeStampDate);
+
+        String req = "insert into historystripe (transaction,amount,date,id_u) values (?,?,?,?)";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setString(1,id);
+        ps.setDouble(2,price);
+        ps.setString(3,formattedDate);
+        ps.setInt(4,CurrentUser.id);
+        ps.executeUpdate();
+
     }
 }

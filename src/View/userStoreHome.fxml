@@ -65,7 +65,7 @@
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <TableView fx:id="table_produit" layoutX="246.0" layoutY="119.0" onMouseClicked="#showImage" prefHeight="535.0" prefWidth="829.0">
+        <TableView fx:id="table_produit" layoutX="246.0" layoutY="119.0" onMouseClicked="#showImage" prefHeight="535.0" prefWidth="829.0" stylesheets="@css/jfx-table-view.css">
             <columns>
                 <TableColumn fx:id="table_nom" prefWidth="244.0" text="Nom" />
                 <TableColumn fx:id="table_prix" text="Prix" />
