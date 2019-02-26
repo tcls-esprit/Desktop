@@ -20,6 +20,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -70,10 +71,18 @@ public class LoginController implements Initializable {
             CurrentUser cu = new CurrentUser(us.getUserByEmail(user.getText()));
 
             if (cu.type.equals(TypeUser.Gerant)) {
-                Parent root = FXMLLoader.load(getClass().getResource("../View/userStoreHome.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("../View/HomePage.fxml"));
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
-                stage.setTitle("espace gerant");
+                stage.setTitle("Cite De La Culture");
+                stage.initStyle(StageStyle.UNDECORATED);
+                root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        stage.setX(event.getScreenX() );
+                        stage.setY(event.getScreenY() );
+                    }
+                });
                 stage.setScene(scene);
                 stage.show();
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();

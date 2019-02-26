@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="1447.0" style="-fx-background-color: #fafafa;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomePageController">
+    <children>
+        <ImageView fitHeight="707.0" fitWidth="1455.0" layoutX="-5.0" layoutY="-5.0">
+            <image>
+                <Image url="@../View/img/LoggedIn.png" />
+            </image>
+        </ImageView>
+        <Pane layoutY="-5.0" prefHeight="707.0" prefWidth="236.0" style="-fx-background-color: #4db6ac;">
+            <effect>
+                <DropShadow color="#00000057" />
+            </effect>
+            <children>
+                <ImageView fitHeight="75.0" fitWidth="81.0" layoutX="77.0" layoutY="26.0">
+                    <image>
+                        <Image url="@../View/img/icons8-school-64.png" />
+                    </image>
+                </ImageView>
+                <JFXButton layoutX="1.0" layoutY="419.0" onAction="#loadCinema" prefHeight="50.0" prefWidth="236.0" text="Cinema">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                    <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop color="#711fab" />
+                                <Stop color="#4d65ae" offset="1.0" />
+                            </stops>
+                        </LinearGradient>
+                    </textFill>
+                </JFXButton>
+                <JFXButton layoutX="1.0" layoutY="331.0" onAction="#loadMusee" prefHeight="50.0" prefWidth="236.0" text="Musee">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                    <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop color="#711fab" />
+                                <Stop color="#4d65ae" offset="1.0" />
+                            </stops>
+                        </LinearGradient>
+                    </textFill>
+                </JFXButton>
+                <JFXButton layoutX="1.0" layoutY="504.0" onAction="#loadStore" prefHeight="50.0" prefWidth="236.0" text="Boutique">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                    <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop color="#711fab" />
+                                <Stop color="#4d65ae" offset="1.0" />
+                            </stops>
+                        </LinearGradient>
+                    </textFill>
+                </JFXButton>
+                <JFXButton layoutY="239.0" onAction="#loadTheatre" prefHeight="50.0" prefWidth="236.0" text="Theatre">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                    <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop color="#711fab" />
+                                <Stop color="#4d65ae" offset="1.0" />
+                            </stops>
+                        </LinearGradient>
+                    </textFill>
+                </JFXButton>
+                <JFXButton layoutX="1.0" layoutY="152.0" onAction="#loadEvents" prefHeight="50.0" prefWidth="236.0" text="Evenements">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                    <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop color="#711fab" />
+                                <Stop color="#4d65ae" offset="1.0" />
+                            </stops>
+                        </LinearGradient>
+                    </textFill>
+                </JFXButton>
+                <JFXButton layoutX="1.0" layoutY="599.0" prefHeight="50.0" prefWidth="236.0" text="Boutique">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                    <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop color="#711fab" />
+                                <Stop color="#4d65ae" offset="1.0" />
+                            </stops>
+                        </LinearGradient>
+                    </textFill>
+                </JFXButton>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
+
