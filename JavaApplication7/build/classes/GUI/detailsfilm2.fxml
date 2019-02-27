@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" prefHeight="639.0" prefWidth="934.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Detailsfilm2Controller">
+   <children>
+      <TableView fx:id="sessionfilmtab" layoutX="104.0" layoutY="421.0" prefHeight="139.0" prefWidth="375.0">
+        <columns>
+          <TableColumn fx:id="datetab" prefWidth="136.0" text="Date" />
+          <TableColumn fx:id="debuttab" prefWidth="123.0" text="Heure debut" />
+            <TableColumn fx:id="fintab" prefWidth="139.0" text="Heure fin" />
+        </columns>
+      </TableView>
+      <Rating fx:id="rating" layoutX="578.0" layoutY="43.0" />
+      <ImageView fx:id="pho" fitHeight="232.0" fitWidth="220.0" layoutX="3.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
+      <Pane layoutX="244.0" prefHeight="404.0" prefWidth="87.0">
+         <children>
+            <Label layoutX="-3.0" layoutY="50.0" prefHeight="17.0" prefWidth="106.0" text="Titre :">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label layoutY="117.0" prefHeight="17.0" prefWidth="81.0" text="Durée : ">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="2.0" layoutY="149.0" prefHeight="17.0" prefWidth="96.0" text="Année de sortie">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label layoutY="185.0" text="Categorie :">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="-3.0" layoutY="84.0" text="Réalisateur :">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="4.0" layoutY="217.0" prefHeight="17.0" prefWidth="57.0" text="Rate :  ">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label layoutY="258.0" prefHeight="17.0" prefWidth="81.0" text="Description : ">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+         </children>
+      </Pane>
+      <Label layoutX="585.0" layoutY="404.0" prefHeight="52.0" prefWidth="230.0" text="Trailer">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="msg" layoutX="582.0" layoutY="75.0" prefHeight="17.0" prefWidth="118.0" />
+      <Label fx:id="textrate" layoutX="352.0" layoutY="215.0" />
+      <Label fx:id="texttitre" layoutX="352.0" layoutY="51.0" />
+      <Label fx:id="textduree" layoutX="352.0" layoutY="115.0" prefHeight="17.0" prefWidth="81.0" />
+      <Label fx:id="textcategorie" layoutX="352.0" layoutY="185.0" />
+      <Label fx:id="textrate" layoutX="352.0" layoutY="215.0" />
+      <Label fx:id="textrealisateur" layoutX="352.0" layoutY="84.0" prefHeight="17.0" prefWidth="57.0" />
+      <Label fx:id="textdescription" layoutX="352.0" layoutY="259.0" />
+      <Label fx:id="textsortie" layoutX="352.0" layoutY="153.0" />
+      <MediaView fx:id="videoview" fitHeight="400.0" fitWidth="400.0" layoutX="479.0" layoutY="143.0" />
+      <Button fx:id="buttonrate" layoutX="640.0" layoutY="103.0" mnemonicParsing="false" onAction="#buttonrate" text="Rate" />
+      <Label fx:id="idprivate" cache="true" layoutX="14.0" layoutY="608.0" prefHeight="17.0" prefWidth="13.0">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill></Label>
+      <Button fx:id="btnclose" layoutX="864.0" layoutY="609.0" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="32.0" prefWidth="70.0">
+         <graphic>
+            <FontAwesomeIconView glyphName="ARROW_LEFT" size="32" />
+         </graphic></Button>
+   </children>
+</AnchorPane>

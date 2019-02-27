@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="203.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.ChangerEtatSalleController">
+   <children>
+      <Label layoutX="64.0" layoutY="39.0" text="Salle:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ToggleButton fx:id="changeretat" layoutX="259.0" layoutY="39.0" mnemonicParsing="false" onAction="#modifieretat" text="ToggleButton" />
+      <Label fx:id="id" layoutX="109.0" layoutY="-101.0" text="id" />
+      <Label fx:id="cap" layoutX="144.0" layoutY="-90.0" text="cap" />
+      <Label fx:id="nom" layoutX="64.0" layoutY="130.0" text="nom" />
+      <Label fx:id="type" layoutX="-267.0" layoutY="-141.0" text="type" />
+      <Label fx:id="etat" layoutX="-302.0" layoutY="-33.0" text="salle" />
+   </children>
+</AnchorPane>

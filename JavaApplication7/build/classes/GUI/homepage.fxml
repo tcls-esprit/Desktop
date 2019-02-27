@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.HomepageController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <Label alignment="TOP_CENTER" prefHeight="47.0" prefWidth="304.0" text="Gestion de Théatre" textAlignment="CENTER" underline="true" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="32.0" />
+               </font>
+               <effect>
+                  <Reflection>
+                     <input>
+                        <Lighting bumpInput="$null">
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </input>
+                  </Reflection>
+               </effect>
+            </Label>
+         </top>
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab text="Les Sessions Théatrales ">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="listSession" prefHeight="326.0" prefWidth="488.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+                                <columns>
+                                  <TableColumn fx:id="titrescene" prefWidth="75.0" text="Titre Scene" />
+                                  <TableColumn fx:id="lasalle" prefWidth="75.0" text="La Salle" />
+                                    <TableColumn fx:id="hreDeb" prefWidth="75.0" text="Heure Debut " />
+                                    <TableColumn fx:id="hrefin" prefWidth="75.0" text="Heure fin" />
+                                    <TableColumn fx:id="Prix" prefWidth="75.0" text="Prix " />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem fx:id="sessdel" mnemonicParsing="false" onAction="#sessiondelete" text="Suprrimer">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="CLOSE" />
+                                             </graphic></MenuItem>
+                                          <MenuItem fx:id="sessUpd" mnemonicParsing="false" onAction="#sessionUpdate" text="Modifier">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="WRENCH" />
+                                             </graphic></MenuItem>
+                                          <MenuItem fx:id="sessref" mnemonicParsing="false" onAction="#sessionRefresh" text="Actualiser">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="REFRESH" />
+                                             </graphic></MenuItem>
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                              <Label layoutX="14.0" layoutY="24.0" prefHeight="17.0" prefWidth="170.0" text="Liste Des Sessions Théatrales" />
+                              <TextField fx:id="Recherchesession" layoutX="295.0" layoutY="29.0" onAction="#SessionSearsh" onKeyTyped="#RechercherS" promptText="rechercher" />
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Les Scénes Théatrale">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="tabthe" prefHeight="326.0" prefWidth="488.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+                                <columns>
+                                  <TableColumn fx:id="tnomth" prefWidth="75.0" text="Titre Scéne" />
+                                  <TableColumn fx:id="imagecol" prefWidth="75.0" text="Affiche" />
+                                    <TableColumn fx:id="descol" prefWidth="75.0" text="Scénario" />
+                                    <TableColumn fx:id="colact" prefWidth="75.0" text="Acteur" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#supprimerTheatreAction" text="Supprimer">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="CLOSE" />
+                                             </graphic></MenuItem>
+                                          <MenuItem mnemonicParsing="false" onAction="#ModifierTheatreAction" text="Modifier">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="WRENCH" />
+                                             </graphic></MenuItem>
+                                          <MenuItem mnemonicParsing="false" onAction="#RefreshTheatreAction" text="Actualiser">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="REFRESH" />
+                                             </graphic></MenuItem>
+                                          <MenuItem mnemonicParsing="false" onAction="#InformationTheatreAction" text="Plus détaille ">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="INFO_CIRCLE" />
+                                             </graphic></MenuItem>
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                              <Label layoutX="26.0" layoutY="35.0" text="Liste Des Scénes Théatrales" />
+                              <TextField fx:id="RechercheTheatre" layoutX="303.0" layoutY="31.0" onKeyTyped="#RechercherT" promptText="rechercher" />
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab fx:id="tabacteur" text="Les Acteurs">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="tfrech" layoutX="306.0" layoutY="24.0" onKeyTyped="#RechercheO" promptText="rechercher" />
+                              <Label layoutX="25.0" layoutY="28.0" text="La liste des acteurs" />
+                              <TableView fx:id="tactview" prefHeight="326.0" prefWidth="488.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+                                <columns>
+                                  <TableColumn fx:id="tnomact" prefWidth="75.0" text="Nom d'acteurs" />
+                                  <TableColumn fx:id="tprenomact" prefWidth="75.0" text="Prénom d'acteurs" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#DeleteFromTV" text="Supprimer Acteur">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="CLOSE" />
+                                             </graphic></MenuItem>
+                                          <MenuItem mnemonicParsing="false" onAction="#EditFromTV" text="Modifier Acteur">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="WRENCH" />
+                                             </graphic></MenuItem>
+                                          <MenuItem mnemonicParsing="false" onAction="#RefreshTV" text="Actualiser">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="REFRESH" />
+                                             </graphic></MenuItem>
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+         <left>
+            <VBox prefHeight="293.0" prefWidth="171.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btn_acteur" contentDisplay="TOP" mnemonicParsing="false" onAction="#AjouterActeurAction" prefHeight="72.0" prefWidth="173.0" text="Ajouter Un Acteur">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="USER_SECRET" size="32" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="theatre" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#AjoutTheatre" prefHeight="86.0" prefWidth="174.0" text="Ajouter Une Scene Theatrale">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="CAMERA_RETRO" size="32" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="AjoutSess" contentDisplay="TOP" layoutX="10.0" layoutY="82.0" mnemonicParsing="false" onAction="#AjouterSessionTheatrale" prefHeight="72.0" prefWidth="181.0" text="Ajouter Une Session Theatrale">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="TABLE" size="32" />
+                     </graphic>
+                  </Button>
+                  <Button contentDisplay="TOP" layoutX="10.0" layoutY="171.0" mnemonicParsing="false" onAction="#logout" prefHeight="72.0" prefWidth="179.0" text="Deconnexion">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="POWER_OFF" size="32" />
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+         </left>
+      </BorderPane>
+   </children>
+</StackPane>

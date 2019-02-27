@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="506.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModifierSceneTheatraleController">
+    <children>
+         <Label layoutX="41.0" layoutY="81.0" text="Scene Théatrale" />
+                        <TextField fx:id="txtmodifsc" layoutX="302.0" layoutY="69.0" prefHeight="25.0" prefWidth="200.0" />
+                        <ImageView fx:id="image" fitHeight="89.0" fitWidth="200.0" layoutX="302.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="41.0" layoutY="140.0" text="Image" />
+                        <TextArea fx:id="descModif" layoutX="302.0" layoutY="210.0" prefHeight="74.0" prefWidth="200.0" />
+                        <Label layoutX="41.0" layoutY="256.0" text="Description " />
+                        <Label layoutX="41.0" layoutY="345.0" text="l'Acteur(s)" />
+      <Button fx:id="modifbtn" layoutX="544.0" layoutY="144.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Upload" />
+      <Label layoutX="163.0" layoutY="14.0" text="Modifier une scene théatrale">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="ValiderButton" layoutX="228.0" layoutY="442.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="224.0" text="Valider " />
+      <ComboBox fx:id="comboact" layoutX="302.0" layoutY="350.0" prefHeight="25.0" prefWidth="200.0" />
+    </children>
+</AnchorPane>
