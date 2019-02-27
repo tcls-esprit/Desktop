@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DetailEventConcertController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="898.0" prefWidth="1092.0">
+         <children>
+            <Pane layoutX="35.0" layoutY="65.0" prefHeight="312.0" prefWidth="1033.0">
+               <children>
+                  <ImageView fx:id="imageview" fitHeight="284.0" fitWidth="455.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label layoutX="487.0" layoutY="179.0" prefHeight="31.0" prefWidth="165.0" text="Type Concert">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="#ffddf7" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Label layoutX="487.0" layoutY="216.0" prefHeight="31.0" prefWidth="165.0" text="Liste des artistes">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="#ffddf7" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <JFXTextField fx:id="labelnom" editable="false" layoutX="680.0" layoutY="12.0" />
+                  <JFXTextField fx:id="labeldescription" editable="false" layoutX="680.0" layoutY="53.0" maxWidth="365.0" minWidth="186.0" prefHeight="37.0" prefWidth="348.0" />
+                  <JFXTextField fx:id="labelduree" editable="false" layoutX="680.0" layoutY="96.0" maxWidth="54.0" minWidth="54.0" prefHeight="37.0" prefWidth="54.0" />
+                  <JFXTextField fx:id="labeltype" editable="false" layoutX="681.0" layoutY="134.0" />
+                  <JFXTextField fx:id="labeltypeconcert" editable="false" layoutX="681.0" layoutY="168.0" />
+                  <JFXTextField fx:id="labellisteartistes" editable="false" layoutX="681.0" layoutY="210.0" />
+                  <Label layoutX="784.0" layoutY="98.0" text="Prix">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="#ffddf7" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <JFXTextField fx:id="labelprix" editable="false" layoutX="891.0" layoutY="97.0" maxWidth="54.0" minWidth="54.0" prefHeight="37.0" prefWidth="54.0" />
+                  <Label layoutX="486.0" layoutY="14.0" prefHeight="29.0" prefWidth="54.0" text="Titre">
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="#ffddf7" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="486.0" layoutY="55.0" text="Description">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="#ffddf7" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Label layoutX="485.0" layoutY="98.0" text="Duree">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="BLACK" offset="0.007246376811594203" />
+                              <Stop color="#ffddf7" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Label layoutX="485.0" layoutY="141.0" text="Type Evenement">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#030303" />
+                              <Stop color="#030303" offset="0.007246376811594203" />
+                              <Stop color="#ffddf7" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <FontAwesomeIconView glyphName="CLOCK_ALT" layoutX="561.0" layoutY="124.0" size="32" />
+                  <FontAwesomeIconView glyphName="FILE_TEXT_ALT" layoutX="598.0" layoutY="81.0" size="32" />
+                  <FontAwesomeIconView glyphName="PENCIL" layoutX="539.0" layoutY="40.0" size="32" />
+                  <FontAwesomeIconView glyphName="LIST_ALT" layoutX="651.0" layoutY="167.0" size="32" />
+                  <FontAwesomeIconView glyphName="GROUP" layoutX="651.0" layoutY="240.0" size="32" />
+                  <FontAwesomeIconView glyphName="USD" layoutX="835.0" layoutY="124.0" size="32" />
+                  <FontAwesomeIconView glyphName="LIST_ALT" layoutX="622.0" layoutY="205.0" size="32" />
+               </children>
+            </Pane>
+            <Label layoutX="38.0" layoutY="14.0" prefHeight="45.0" prefWidth="251.0" text="Detail Evenement">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="RED" />
+                        <Stop color="#100000" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tablesessions" layoutX="258.0" layoutY="404.0" prefHeight="124.0" prefWidth="618.0">
+               <columns>
+                  <TableColumn fx:id="columndatedebut" prefWidth="245.0" text="Date Debut" />
+                  <TableColumn fx:id="columndatefin" minWidth="0.0" prefWidth="245.0" text="Date fin" />
+                  <TableColumn fx:id="columnsalle" minWidth="0.0" prefWidth="127.0" text="Salle" />
+               </columns>
+            </TableView>
+            <Label layoutX="31.0" layoutY="522.0" prefHeight="45.0" prefWidth="251.0" text="Les commentaires">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="RED" />
+                        <Stop color="#100000" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tablecomment" layoutX="35.0" layoutY="567.0" prefHeight="191.0" prefWidth="1033.0">
+               <columns>
+                  <TableColumn fx:id="columnowner" prefWidth="150.0" text="Owner" />
+                  <TableColumn fx:id="columncontenu" minWidth="0.0" prefWidth="724.0" text="Contenu" />
+                  <TableColumn fx:id="datecolumn" prefWidth="158.0" text="Date" />
+               </columns>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem fx:id="contextmodif" mnemonicParsing="false" onAction="#modifierCommentaire" text="Modifier" />
+                        <MenuItem fx:id="contextsupp" mnemonicParsing="false" onAction="#supprimerCommentaire" text="Supprimer" />
+                        <MenuItem fx:id="contextsignale" mnemonicParsing="false" onAction="#signaleCommentaire" text="Signalé" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </TableView>
+            <Label layoutX="38.0" layoutY="377.0" prefHeight="45.0" prefWidth="251.0" text="Les sessions">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="RED" />
+                        <Stop color="#100000" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="textareacommentaire" focusColor="#c0392b" layoutX="31.0" layoutY="778.0" maxWidth="414.0" minWidth="366.0" opacity="0.62" prefHeight="82.0" prefWidth="414.0" promptText="Mon commentaire" unFocusColor="#c0392b" />
+            <Button fx:id="buttoncommentaire" layoutX="472.0" layoutY="804.0" mnemonicParsing="false" onAction="#ajouterOuModifCommentaire" text="Commenter">
+               <graphic>
+                  <FontAwesomeIconView glyphName="COMMENT" size="32" />
+               </graphic></Button>
+            <Button fx:id="btnclose" layoutX="539.0" layoutY="860.0" mnemonicParsing="false" onAction="#closeButtonAction">
+               <graphic>
+                  <FontAwesomeIconView glyphName="CLOSE" size="32" />
+               </graphic></Button>
+            <FontAwesomeIconView glyphName="COMMENTS" layoutX="273.0" layoutY="555.0" size="32" />
+            <FontAwesomeIconView glyphName="LIST" layoutX="206.0" layoutY="410.0" size="32" />
+            <Pane fx:id="sessionpane" layoutX="890.0" layoutY="388.0" prefHeight="160.0" prefWidth="169.0" visible="false">
+               <children>
+                  <Button fx:id="btnajouter" layoutY="14.0" mnemonicParsing="false" onAction="#ajouterSession" prefHeight="43.0" prefWidth="118.0" text="Ajouter">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="PLUS_CIRCLE" size="32" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnsupprimer" layoutY="100.0" mnemonicParsing="false" onAction="#supprimerSession" text="Supprimer">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="TRASH" size="32" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnmodifier" layoutY="57.0" mnemonicParsing="false" onAction="#modifierSession" prefHeight="43.0" prefWidth="118.0" text="Modifier">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="EDIT" size="32" />
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

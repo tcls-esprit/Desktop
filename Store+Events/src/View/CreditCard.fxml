@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="753.0" prefWidth="594.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CardController">
+   <children>
+      <Pane layoutX="19.0" layoutY="97.0" prefHeight="557.0" prefWidth="549.0" style="-fx-background-color: white;">
+         <effect>
+            <DropShadow color="#609696a1" />
+         </effect>
+         <children>
+            <JFXTextField fx:id="cardHolder" layoutX="87.0" layoutY="108.0" prefHeight="31.0" prefWidth="215.0" promptText="Tituleur" />
+            <Label layoutX="87.0" layoutY="63.0" text="Carte Details" textFill="#757575">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="cardNumber" layoutX="87.0" layoutY="161.0" prefHeight="31.0" prefWidth="215.0" promptText="Numero Carte Ex:4242.." />
+            <JFXTextField fx:id="expDate" layoutX="87.0" layoutY="271.0" prefHeight="31.0" prefWidth="215.0" promptText="Ex: 16/05" />
+            <Label layoutX="87.0" layoutY="226.0" text="Date d'Expiration" textFill="#757575">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="securityCode" layoutX="87.0" layoutY="390.0" prefHeight="31.0" prefWidth="215.0" promptText="Ex: 125" />
+            <Label layoutX="87.0" layoutY="345.0" text="CVC" textFill="#757575">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ImageView layoutX="217.0" layoutY="59.0">
+               <image>
+                  <Image url="@../View/img/creditfront.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="161.0" layoutY="341.0">
+               <image>
+                  <Image url="@../View/img/expirationCard.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="253.0" layoutY="222.0">
+               <image>
+                  <Image url="@../View/img/cvc.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="162.0" layoutY="483.0">
+               <image>
+                  <Image url="@../View/img/lock.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="206.0" layoutY="490.0" text="Payment securisé" textFill="#9a9a9a">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutY="686.0" prefHeight="86.0" prefWidth="594.0" style="-fx-background-color: white;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <DropShadow color="#238a8a96" />
+         </effect>
+         <children>
+            <JFXButton layoutX="176.0" layoutY="12.0" onAction="#CheckOut" prefHeight="62.0" prefWidth="242.0" text="Payer ">
+               <font>
+                  <Font name="Segoe UI Bold" size="24.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#31b3bc" />
+                        <Stop color="#ab389c" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Label fx:id="verification" layoutX="207.0" layoutY="14.0" prefHeight="49.0" prefWidth="306.0" text="Payment En Ligne" textFill="#35c98cfa">
+         <font>
+            <Font name="Segoe UI Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView layoutX="131.0" layoutY="14.0">
+         <image>
+            <Image url="@../View/img/icons8-mastercard-48.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

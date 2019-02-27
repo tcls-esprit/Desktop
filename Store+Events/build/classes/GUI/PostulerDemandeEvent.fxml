@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="352.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PostulerDemandeEventController">
+   <children>
+      <JFXTextField fx:id="labelnom" layoutX="192.0" layoutY="69.0" />
+      <JFXTextField fx:id="labeldescription" layoutX="192.0" layoutY="110.0" maxWidth="365.0" minWidth="186.0" prefHeight="37.0" prefWidth="365.0" />
+      <JFXTextField fx:id="labelduree" layoutX="192.0" layoutY="153.0" maxWidth="54.0" minWidth="54.0" prefHeight="37.0" prefWidth="54.0" />
+      <Label layoutX="14.0" layoutY="24.0" prefHeight="45.0" prefWidth="512.0" text="Postuler une demande d'événement">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="RED" />
+                  <Stop color="#100000f5" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="boxtypeevent" layoutX="200.0" layoutY="206.0" prefHeight="31.0" prefWidth="140.0" />
+      <JFXTextField fx:id="labelprix" layoutX="367.0" layoutY="153.0" maxWidth="54.0" minWidth="54.0" prefHeight="37.0" prefWidth="54.0" />
+      <Label layoutX="14.0" layoutY="249.0" text="Image">
+         <font>
+            <Font size="21.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#ffddf7" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Button fx:id="btninsert" layoutX="200.0" layoutY="249.0" mnemonicParsing="false" onAction="#insert_image">
+         <graphic>
+            <FontAwesomeIconView glyphName="IMAGE" size="32" />
+         </graphic></Button>
+      <Button fx:id="buttonconfirmer" layoutX="230.0" layoutY="300.0" mnemonicParsing="false" onAction="#accepter">
+         <graphic>
+            <FontAwesomeIconView glyphName="CHECK_CIRCLE" size="32" />
+         </graphic></Button>
+      <Button fx:id="btnclose" layoutX="284.0" layoutY="300.0" mnemonicParsing="false" onAction="#closeButtonAction">
+         <graphic>
+            <FontAwesomeIconView glyphName="CLOSE" size="32" />
+         </graphic></Button>
+      <Label layoutX="307.0" layoutY="161.0" text="Prix">
+         <font>
+            <Font size="21.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#ffddf7" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="8.0" layoutY="77.0" prefHeight="29.0" prefWidth="54.0" text="Titre">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#ffddf7" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="9.0" layoutY="118.0" text="Description">
+         <font>
+            <Font size="21.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#ffddf7" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="8.0" layoutY="161.0" text="Duree">
+         <font>
+            <Font size="21.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="BLACK" offset="0.007246376811594203" />
+                  <Stop color="#ffddf7" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="8.0" layoutY="204.0" text="Type Evenement">
+         <font>
+            <Font size="21.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#030303" />
+                  <Stop color="#030303" offset="0.007246376811594203" />
+                  <Stop color="#ffddf7" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <FontAwesomeIconView glyphName="CLOCK_ALT" layoutX="84.0" layoutY="187.0" size="32" />
+      <FontAwesomeIconView glyphName="FILE_TEXT_ALT" layoutX="121.0" layoutY="144.0" size="32" />
+      <FontAwesomeIconView glyphName="PENCIL" layoutX="61.0" layoutY="103.0" size="32" />
+      <FontAwesomeIconView glyphName="LIST_ALT" layoutX="161.0" layoutY="230.0" size="32" />
+      <FontAwesomeIconView glyphName="USD" layoutX="348.0" layoutY="186.0" size="32" />
+   </children>
+</AnchorPane>

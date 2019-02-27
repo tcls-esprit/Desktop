@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="927.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficheEventUserController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu fx:id="menuprofil" mnemonicParsing="false" text="Profil">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="USER" size="32" />
+                     </graphic>
+                </Menu>
+                <Menu fx:id="menulogout" mnemonicParsing="false" text="Logout">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Logout" />
+                  </items>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SIGN_OUT" size="32" />
+                     </graphic>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab fx:id="tabevent" text="Les événements">
+                     <content>
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <center>
+                                    <TableView fx:id="tableevenements" prefHeight="509.0" prefWidth="677.0" BorderPane.alignment="CENTER">
+                                       <columns>
+                                          <TableColumn fx:id="titrecolumn" prefWidth="207.0" text="Titre événement" />
+                                          <TableColumn fx:id="descriptioncolumn" minWidth="0.0" prefWidth="249.0" text="Description événement" />
+                                          <TableColumn fx:id="typecolumn" minWidth="0.0" prefWidth="294.0" text="Type événement" />
+                                       </columns>
+                                       <contextMenu>
+                                          <ContextMenu />
+                                       </contextMenu>
+                                    </TableView>
+                                 </center>
+                                 <left>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Button fx:id="buttonacceeuil" contentDisplay="TOP" mnemonicParsing="false" prefHeight="74.0" prefWidth="110.0" text="Acceuil">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="HOME" size="32" />
+                                             </graphic></Button>
+                                          <Button fx:id="buttondetail" contentDisplay="TOP" mnemonicParsing="false" onAction="#detailEvent" prefHeight="82.0" prefWidth="99.0" text="Voir  détails">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="FILE_ALT" size="32" />
+                                             </graphic></Button>
+                                          <Button fx:id="buttonajouter" contentDisplay="TOP" mnemonicParsing="false" onAction="#ajouterEvent" prefHeight="141.0" prefWidth="100.0" text="Postuler un demande d'ajout d'un événement" textAlignment="CENTER" wrapText="true">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="ENVELOPE_SQUARE" size="32" />
+                                             </graphic></Button>
+                                          <Button fx:id="btnactualiser1" contentDisplay="TOP" mnemonicParsing="false" onAction="#Actualiser" prefHeight="86.0" prefWidth="109.0" text="Actualiser">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="REFRESH" size="32" />
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                 </left>
+                                 <right>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <JFXTextField fx:id="txtchercher" promptText="chercher" />
+                                       </children>
+                                    </VBox>
+                                 </right>
+                              </BorderPane>
+                           </children>
+                        </StackPane>
+                     </content>
+                </Tab>
+                <Tab fx:id="tabmesévent" text="Mes événements">
+                     <content>
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <left>
+                                    <VBox prefHeight="368.0" prefWidth="109.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Button fx:id="buttonacceeuil1" contentDisplay="TOP" mnemonicParsing="false" prefHeight="74.0" prefWidth="110.0" text="Acceuil">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="HOME" size="32" />
+                                             </graphic></Button>
+                                          <Button fx:id="buttondetail1" contentDisplay="TOP" mnemonicParsing="false" onAction="#detailEvent" prefHeight="79.0" prefWidth="112.0" text="Voir  détails">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="FILE_ALT" size="32" />
+                                             </graphic></Button>
+                                          <Button fx:id="buttonsupprimer" contentDisplay="TOP" mnemonicParsing="false" onAction="#supprimer" prefHeight="86.0" prefWidth="115.0" text="Supprimer">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="TRASH" size="32" />
+                                             </graphic></Button>
+                                          <Button fx:id="buttonmodifier" contentDisplay="TOP" mnemonicParsing="false" onAction="#modifierEvent" prefHeight="86.0" prefWidth="109.0" text="Modifier">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="EDIT" size="32" />
+                                             </graphic></Button>
+                                          <Button fx:id="btnactualiser" contentDisplay="TOP" mnemonicParsing="false" onAction="#Actualiser1" prefHeight="86.0" prefWidth="109.0" text="Actualiser">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="REFRESH" size="32" />
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                 </left>
+                                 <center>
+                                    <TableView fx:id="tableevenements1" prefHeight="401.0" prefWidth="674.0" BorderPane.alignment="CENTER">
+                                       <columns>
+                                          <TableColumn fx:id="titrecolumn1" prefWidth="154.0" text="Titre événement" />
+                                          <TableColumn fx:id="descriptioncolumn1" minWidth="0.0" prefWidth="309.0" text="Description événement" />
+                                          <TableColumn fx:id="typecolumn1" minWidth="0.0" prefWidth="152.0" text="Type événement" />
+                                          <TableColumn fx:id="columnetat" minWidth="0.0" prefWidth="57.0" text="Etat" />
+                                       </columns>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                             <items>
+                                                <MenuItem fx:id="menuajout" mnemonicParsing="false" onAction="#AjouterSession" text="Ajouter Session" />
+                                                <MenuItem fx:id="menumodifier" mnemonicParsing="false" onAction="#modifierSession" text="Modifier Session" />
+                                                <MenuItem fx:id="menusupprimer" mnemonicParsing="false" text="Supprimer Session" />
+                                             </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                    </TableView>
+                                 </center>
+                                 <right>
+                                    <VBox prefHeight="442.0" prefWidth="98.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <JFXTextField fx:id="txtchercher1" labelFloat="true" maxWidth="144.0" minWidth="144.0" prefHeight="37.0" prefWidth="144.0" promptText="chercher" />
+                                       </children>
+                                    </VBox>
+                                 </right>
+                              </BorderPane>
+                           </children>
+                        </StackPane>
+                     </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>
