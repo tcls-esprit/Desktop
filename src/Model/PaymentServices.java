@@ -4,9 +4,7 @@ package Model;
 import Model.ConnectionDB;
 import com.stripe.Stripe;
 import com.stripe.exception.*;
-import com.stripe.model.Charge;
-import com.stripe.model.Customer;
-import com.stripe.model.Order;
+import com.stripe.model.*;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -61,7 +59,7 @@ public class PaymentServices {
     }*/
 
 
-    public Charge chargeCreditCard(Double OrderBill) {
+    public Charge chargeCreditCard(Double OrderBill,String tok) {
 // Stripe requires the charge amount to be in cents
         Charge x = null;
         int Bill = (int) (100 * OrderBill);
@@ -70,7 +68,7 @@ public class PaymentServices {
         chargeParams.put("amount", Bill);
         chargeParams.put("currency", "usd");
         chargeParams.put("description", "Monthly Charges");
-        chargeParams.put("customer", "cus_EWLx9M4syHugzQ");
+        chargeParams.put("source",tok);
 
         try {
             // Submit charge to credit card
@@ -94,5 +92,17 @@ public class PaymentServices {
         }
         System.out.println("Yay! your payment accepted, enjoy the item!");
         return x;
+    }
+    public String createToken(String Number,String m,String y,String cvc) throws StripeException {
+        Map<String, Object> tokenParams = new HashMap<String, Object>();
+        Map<String, Object> cardParams = new HashMap<String, Object>();
+        cardParams.put("number", Number);
+        cardParams.put("exp_month", m);
+        cardParams.put("exp_year", y);
+        cardParams.put("cvc", cvc);
+        tokenParams.put("card", cardParams);
+        Token x = Token.create(tokenParams);
+        //System.out.println(x);
+        return x.getId();
     }
 }

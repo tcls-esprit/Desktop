@@ -19,7 +19,7 @@
             <DropShadow color="#00000057" />
          </effect>
          <children>
-            <ImageView fitHeight="75.0" fitWidth="81.0" layoutX="50.0" layoutY="26.0">
+            <ImageView fitHeight="75.0" fitWidth="81.0" layoutX="50.0" layoutY="26.0" onMouseClicked="#backHome">
                <image>
                   <Image url="@../View/img/icons8_Online_Store_48px.png" />
                </image>

@@ -137,7 +137,7 @@ public class PanierController implements Initializable {
 
     }
 
-    private void loadData() throws SQLException, JSONException {
+    public void loadData() throws SQLException, JSONException {
         ObservableList<ShoppingCart> data = null;
         try {
             data = FXCollections.observableArrayList(new CartServices().showCart(CurrentUser.id));
@@ -226,8 +226,15 @@ public class PanierController implements Initializable {
     }
 
     @FXML
-    private void payItems(ActionEvent actionEvent) throws SQLException, JSONException {
-        PaymentServices pay = new PaymentServices();
+    private void payItems(ActionEvent actionEvent) throws SQLException, JSONException, IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../View/CreditCard.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Cite De La Culture");
+        stage.setScene(scene);
+        stage.showAndWait();
+        loadData();
+        /*PaymentServices pay = new PaymentServices();
         CartServices c = new CartServices();
         Double tot = c.showCart(CurrentUser.id).stream().mapToDouble(e -> e.getTotal()).sum();
         //System.out.println(tot);
@@ -237,12 +244,7 @@ public class PanierController implements Initializable {
         addToHistroy(y);
         }
 
-        c.showCart(CurrentUser.id).
-
-    stream().
-
-    forEach(e ->
-
+        c.showCart(CurrentUser.id).stream().forEach(e ->
     {
         int id = e.getId();
         String req1 = "delete from cart where id=" + id;
@@ -252,9 +254,9 @@ public class PanierController implements Initializable {
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
-    });
+    });*/
 
-    loadData();
+    //loadData();
 }
 
     @FXML
@@ -268,24 +270,7 @@ public class PanierController implements Initializable {
         mainPane.getChildren().setAll(pane);
     }
 
-    private void addToHistroy(Charge X) throws SQLException {
-        System.out.println(X);
-        String id = X.getBalanceTransaction();
-        Double price =X.getAmount().doubleValue()/100;
-        Long x = X.getCreated();
-        Date timeStampDate = new Date((long) (x * 1000));
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss a");
-        String formattedDate = dateFormat.format(timeStampDate);
 
-        String req = "insert into historystripe (transaction,amount,date,id_u) values (?,?,?,?)";
-        PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setString(1,id);
-        ps.setDouble(2,price);
-        ps.setString(3,formattedDate);
-        ps.setInt(4,CurrentUser.id);
-        ps.executeUpdate();
-
-    }
 
     @FXML
     private void logOut(Event event) throws IOException {
