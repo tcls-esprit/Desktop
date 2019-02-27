@@ -31,6 +31,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -49,12 +52,21 @@ public class LoginController implements Initializable {
     private JFXTextField user;
     @FXML
     private JFXPasswordField pwdd;
+    @FXML
+    private MediaView playground;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+//        MediaPlayer oracleVid = new MediaPlayer(new Media());
+//        playground.setMediaPlayer(oracleVid);
+//        oracleVid.setMute(true);
+//        oracleVid.setRate(20);
+//        oracleVid.setCycleCount(MediaPlayer.INDEFINITE);
+//        oracleVid.play();
+
         // TODO
     }   
     UserService us = new UserService() ;
