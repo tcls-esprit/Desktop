@@ -12,11 +12,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1150.0" style="-fx-background-color: #fafafa;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ShowController">
     <children>
-        <Pane prefHeight="677.0" prefWidth="180.0" style="-fx-background-color: #4db6ac;">
+        <Pane prefHeight="709.0" prefWidth="180.0" style="-fx-background-color: #4db6ac;">
             <effect>
                 <DropShadow color="#00000057" />
             </effect>
@@ -26,7 +28,18 @@
                         <Image url="@../View/img/icons8_Online_Store_48px.png" />
                     </image>
                 </ImageView>
-            <JFXButton layoutX="58.0" layoutY="152.0" onAction="#Retour" text="Back" />
+            <JFXButton layoutX="1.0" layoutY="186.0" onAction="#Retour" prefHeight="50.0" prefWidth="180.0" text="Ajouter Produit">
+               <font>
+                  <Font name="Segoe UI Bold" size="18.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.28640776699029125">
+                     <stops>
+                        <Stop color="#2b73f0" />
+                        <Stop color="#9b19d7" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill></JFXButton>
             </children>
         </Pane>
         <Label layoutX="251.0" layoutY="44.0" text="Liste Des Produits" textFill="#35836d">
@@ -34,7 +47,7 @@
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-      <TableView fx:id="table_produit" layoutX="246.0" layoutY="105.0" prefHeight="535.0" prefWidth="901.0">
+      <TableView fx:id="table_produit" layoutX="246.0" layoutY="105.0" prefHeight="535.0" prefWidth="901.0" stylesheets="@css/jfx-table-view.css">
         <columns>
           <TableColumn fx:id="table_nom" onEditCommit="#editableName" prefWidth="244.0" text="Nom" />
           <TableColumn fx:id="table_prix" onEditCommit="#editablePrice" text="Prix" />
@@ -52,7 +65,6 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
-      <JFXButton layoutX="510.0" layoutY="48.0" onMouseClicked="#deleteProduit" text="Delete Product" />
       <JFXTextField fx:id="searchInput" layoutX="884.0" layoutY="46.0" onKeyReleased="#searchTable" promptText="Rechercher" />
     </children>
 </AnchorPane>

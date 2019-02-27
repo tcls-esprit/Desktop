@@ -71,18 +71,27 @@ public class LoginController implements Initializable {
             CurrentUser cu = new CurrentUser(us.getUserByEmail(user.getText()));
 
             if (cu.type.equals(TypeUser.Gerant)) {
-                Parent root = FXMLLoader.load(getClass().getResource("../View/HomePage.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("../View/adminHomePage.fxml"));
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.setTitle("Cite De La Culture");
-                stage.initStyle(StageStyle.UNDECORATED);
+                /*stage.initStyle(StageStyle.UNDECORATED);
                 root.setOnMouseDragged(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
                         stage.setX(event.getScreenX() );
                         stage.setY(event.getScreenY() );
                     }
-                });
+                });*/
+                stage.setScene(scene);
+                stage.show();
+                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+            }
+            else if (cu.type.equals(TypeUser.SimpleUser)) {
+                Parent root = FXMLLoader.load(getClass().getResource("../View/HomePage.fxml"));
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setTitle("Cite De La Culture");
                 stage.setScene(scene);
                 stage.show();
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
