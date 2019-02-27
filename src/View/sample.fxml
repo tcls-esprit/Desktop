@@ -8,11 +8,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="1045.0" style="-fx-background-color: #fafafa;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProduitController">
    <children>
-      <Pane prefHeight="677.0" prefWidth="180.0" style="-fx-background-color: #4db6ac;">
+      <Pane prefHeight="710.0" prefWidth="180.0" style="-fx-background-color: #4db6ac;">
          <effect>
             <DropShadow color="#00000057" />
          </effect>
@@ -22,7 +24,18 @@
                   <Image url="@../View/img/icons8_Online_Store_48px.png" />
                </image>
             </ImageView>
-            <JFXButton layoutX="58.0" layoutY="152.0" onAction="#showList" text="Produits" />
+            <JFXButton layoutY="152.0" onAction="#showList" prefHeight="43.0" prefWidth="180.0" text="Produits">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#1b77c3" />
+                        <Stop color="#761aff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font name="Segoe UI Bold" size="18.0" />
+               </font></JFXButton>
          </children>
       </Pane>
       <JFXTextField fx:id="name_produit" focusColor="#4093a8" layoutX="268.0" layoutY="153.0" prefHeight="31.0" prefWidth="262.0" promptText="Nom" />
