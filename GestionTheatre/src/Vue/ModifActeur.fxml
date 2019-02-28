@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="226.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Vue.ModifActeurController">
+    <children>
+      <VBox layoutX="79.0" prefHeight="238.0" prefWidth="618.0" AnchorPane.bottomAnchor="172.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="Nom d'acteur">
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <JFXTextField fx:id="tnommodif" focusColor="#40a84ecc">
+               <padding>
+                  <Insets left="100.0" right="100.0" top="20.0" />
+               </padding>
+            </JFXTextField>
+            <Label text="Prenom d'acteur">
+               <VBox.margin>
+                  <Insets left="30.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <JFXTextField fx:id="tprenommodif" focusColor="#40a84e">
+               <padding>
+                  <Insets left="100.0" right="100.0" top="20.0" />
+               </padding>
+            </JFXTextField>
+         </children>
+      </VBox>
+      <JFXButton fx:id="modfi" layoutX="138.0" layoutY="244.0" onAction="#ModActeur" prefHeight="25.0" prefWidth="118.0" text="Modifier" />
+      <JFXButton fx:id="fermer" layoutX="355.0" layoutY="244.0" onAction="#fermer" text="Fermer" />
+   </children>
+</AnchorPane>

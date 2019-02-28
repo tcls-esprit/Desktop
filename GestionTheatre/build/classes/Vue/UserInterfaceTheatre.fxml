@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vue.UserInterfaceTheatreController">
+   <children>
+      <BorderPane layoutX="190.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Label text="Bienvenue " BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="38.0" />
+               </font>
+            </Label>
+         </top>
+         <left>
+            <VBox prefHeight="317.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton fx:id="participerbtn" onAction="#participerAction" prefHeight="57.0" prefWidth="100.0" text="Participer" />
+                  <JFXButton fx:id="Deconnection" onAction="#DeconnexionAction" prefHeight="46.0" prefWidth="100.0" text="Quitter" />
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <TableView fx:id="TableUser" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="salle" prefWidth="75.0" text="La Salle" />
+                  <TableColumn fx:id="debut" prefWidth="75.0" text="Heure debut" />
+                  <TableColumn fx:id="fin" prefWidth="75.0" text="Heure Fin" />
+                  <TableColumn fx:id="prixscene" prefWidth="75.0" text="Prix" />
+                <TableColumn fx:id="sceneth" prefWidth="75.0" text="Scéne Theatrale" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
