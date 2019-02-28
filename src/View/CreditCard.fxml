@@ -74,7 +74,7 @@
             <DropShadow color="#238a8a96" />
          </effect>
          <children>
-            <JFXButton layoutX="176.0" layoutY="12.0" onAction="#CheckOut" prefHeight="62.0" prefWidth="242.0" text="Payer ">
+            <JFXButton fx:id="payButton" layoutX="176.0" layoutY="12.0" onAction="#CheckOut" prefHeight="62.0" prefWidth="242.0" text="Payer ">
                <font>
                   <Font name="Segoe UI Bold" size="24.0" />
                </font>

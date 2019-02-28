@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
@@ -20,49 +21,33 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="1441.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PanierController">
     <children>
-        <Pane layoutY="50.0" prefHeight="648.0" prefWidth="180.0" style="-fx-background-color: #b2dfdb;">
+        <Pane layoutY="50.0" prefHeight="648.0" prefWidth="214.0" style="-fx-background-color: #15546C;">
             <effect>
                 <DropShadow color="#00000057" />
             </effect>
             <children>
-                <ImageView fitHeight="75.0" fitWidth="81.0" layoutX="50.0" layoutY="26.0">
+                <ImageView fitHeight="75.0" fitWidth="81.0" layoutX="67.0" layoutY="26.0" onMouseClicked="#backHome">
                     <image>
                         <Image url="@../View/img/icons8_Online_Store_48px.png" />
                     </image>
                 </ImageView>
-                <JFXButton layoutY="238.0" onAction="#loadHome" prefHeight="50.0" prefWidth="180.0" text="Home">
+                <JFXButton layoutY="238.0" onAction="#loadHome" prefHeight="50.0" prefWidth="214.0" text="Home" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#711fab" />
-                        <Stop color="#4d65ae" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill></JFXButton>
-                <JFXButton layoutX="1.0" layoutY="419.0" onAction="#loadHistory" prefHeight="50.0" prefWidth="180.0" text="Historique">
+                        <Font name="System Bold" size="22.0" />
+                    </font></JFXButton>
+                <JFXButton layoutX="1.0" layoutY="419.0" onAction="#loadHistory" prefHeight="50.0" prefWidth="214.0" text="Historique" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="22.0" />
                     </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#711fab" />
-                        <Stop color="#4d65ae" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill>
                 </JFXButton>
-                <JFXButton layoutX="1.0" layoutY="331.0" prefHeight="50.0" prefWidth="180.0" text="Panier" textFill="WHITE">
+                <JFXButton layoutX="1.0" layoutY="331.0" prefHeight="50.0" prefWidth="214.0" text="Panier" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="22.0" />
                     </font>
                 </JFXButton>
             </children>
         </Pane>
-        <Label fx:id="basket" layoutX="251.0" layoutY="50.0" text="Mon Panier" textFill="#35836d">
+        <Label fx:id="basket" layoutX="251.0" layoutY="54.0" text="Mon Panier" textFill="#006c94">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
@@ -83,7 +68,7 @@
          </contextMenu>
         </TableView>
         <JFXTextField fx:id="searchInput" layoutX="904.0" layoutY="66.0" onKeyReleased="#searchTable" promptText="Rechercher" />
-      <JFXButton fx:id="cashOut" layoutX="1087.0" layoutY="155.0" onAction="#payItems" prefHeight="56.0" prefWidth="341.0" text="Payer">
+      <JFXButton fx:id="cashOut" layoutX="1087.0" layoutY="155.0" onAction="#payItems" prefHeight="56.0" prefWidth="341.0" style="-fx-background-color: #B2EBF2;" text="Payer">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -96,6 +81,9 @@
          <font>
             <Font name="Segoe UI Bold" size="20.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Label fx:id="result" alignment="CENTER" layoutX="1083.0" layoutY="444.0" prefHeight="35.0" prefWidth="349.0">
          <contextMenu>
@@ -155,33 +143,22 @@
             </HBox>
          </children>
       </VBox>
-      <Pane layoutX="-6.0" layoutY="-1.0" prefHeight="50.0" prefWidth="1448.0" style="-fx-background-color: #4db6ac;">
+      <Pane layoutX="-6.0" layoutY="-1.0" prefHeight="50.0" prefWidth="1458.0" style="-fx-background-color: white;">
          <children>
-            <Label fx:id="name" alignment="CENTER" layoutX="1116.0" layoutY="13.0" prefHeight="27.0" prefWidth="101.0" textFill="#e4e4e4">
+            <Label layoutX="36.0" layoutY="11.0" text="Cite De La Culture" textFill="#006c94">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="lastName" alignment="CENTER" layoutX="1230.0" layoutY="13.0" prefHeight="27.0" prefWidth="115.0" textFill="#e4e4e4">
+            <JFXButton layoutX="1357.0" layoutY="10.0" onMouseClicked="#logOut" style="-fx-background-color: #e57373;" text="Log Out" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
-            </Label>
-            <Label layoutX="36.0" layoutY="11.0" text="Cite De La Culture" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <JFXButton fx:id="settings" layoutX="1332.0" layoutY="3.0">
-               <contextMenu>
-                  <ContextMenu>
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="home" />
-                        <MenuItem mnemonicParsing="false" onAction="#logOut" text="logout" />
-                    </items>
-                  </ContextMenu>
-               </contextMenu></JFXButton>
+            </JFXButton>
          </children>
+         <effect>
+            <DropShadow color="#00000055" />
+         </effect>
       </Pane>
       <VBox layoutX="1087.0" layoutY="516.0" prefHeight="174.0" prefWidth="340.0" style="-fx-border-color: black;">
          <children>
@@ -194,5 +171,20 @@
             <Label fx:id="liveDinar" alignment="CENTER" prefHeight="58.0" prefWidth="344.0" style="-fx-border-color: black;" />
          </children>
       </VBox>
+      <ImageView layoutX="1284.0" layoutY="2.0">
+         <image>
+            <Image url="@img/avatar.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="name" layoutX="1101.0" layoutY="11.0" prefHeight="27.0" prefWidth="93.0" textFill="#535353">
+         <font>
+            <Font name="Segoe UI" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lastname" layoutX="1190.0" layoutY="12.0" prefHeight="24.0" prefWidth="78.0" textFill="#535353">
+         <font>
+            <Font name="Segoe UI" size="20.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

@@ -23,6 +23,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -67,7 +68,7 @@ public class PanierController implements Initializable {
     @FXML
     private Label transactionDate;
     @FXML
-    private Label lastName;
+    private Label lastname;
     @FXML
     private Label name;
     @FXML
@@ -86,8 +87,7 @@ public class PanierController implements Initializable {
     private Label basket;
     @FXML
     private JFXButton cashOut;
-    @FXML
-    private JFXButton settings;
+
 
     public PanierController() {
         cnx = ConnectionDB.getInstance().getConnection();
@@ -95,6 +95,8 @@ public class PanierController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        name.setText(CurrentUser.nom);
+        lastname.setText(CurrentUser.prenom);
         table_produit.setEditable(true);
         table_nom.setEditable(false);
         table_total.setEditable(false);
@@ -122,9 +124,6 @@ public class PanierController implements Initializable {
         basket.setGraphic(new ImageView(Basket));
         Image pay = new Image("file:"+path+"pay.png");
         cashOut.setGraphic(new ImageView(pay));
-        Image log = new Image("file:"+path+"settings.png");
-        settings.setGraphic(new ImageView(log));
-
 
     }
 
@@ -153,8 +152,6 @@ public class PanierController implements Initializable {
         Double euros = (currency.getJSONObject("quotes").getDouble("USDEUR") * tot);
         euro.setText(String.format("%.3f", euros));
         dinar.setText(String.format("%.3f", dinars));
-        name.setText(CurrentUser.nom);
-        lastName.setText(CurrentUser.prenom);
         Date timeStampDate = new Date((long)(currency.getLong("timestamp")*1000));
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String formattedDate = dateFormat.format(timeStampDate);
@@ -273,16 +270,27 @@ public class PanierController implements Initializable {
 
 
     @FXML
-    private void logOut(Event event) throws IOException {
+    private void logOut(MouseEvent mouseEvent) throws IOException {
 
-        cashOut.getScene().getWindow().hide();
-        Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../View/Login.fxml"));
         Scene scene = new Scene(root);
-
+        Stage stage = new Stage();
+        stage.setTitle("Cite De La Culture");
         stage.setScene(scene);
         stage.show();
+        ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
 
 
+    }
+
+    @FXML
+    private void backHome(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../View/HomePage.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Cite De La Culture");
+        stage.setScene(scene);
+        stage.show();
+        ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
     }
 }

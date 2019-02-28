@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.ConnectionDB;
+import Model.CurrentUser;
 import Model.ProduitStock;
 import Model.StockServices;
 import com.jfoenix.controls.JFXTextField;
@@ -12,8 +13,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -21,14 +25,15 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
+import org.omg.CORBA.Current;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -63,6 +68,10 @@ public class ShowController implements Initializable {
     private Connection cnx;
     @FXML
     private JFXTextField searchInput;
+    @FXML
+    private Label name;
+    @FXML
+    private Label lastname;
 
     public ShowController() {
         cnx = ConnectionDB.getInstance().getConnection();
@@ -70,6 +79,8 @@ public class ShowController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        name.setText(CurrentUser.nom);
+        lastname.setText(CurrentUser.prenom);
         table_produit.setEditable(true);
         table_nom.setCellFactory(TextFieldTableCell.forTableColumn());
         table_description.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -243,4 +254,25 @@ public class ShowController implements Initializable {
 
     }
 
+    @FXML
+    private void backHome(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../View/adminHomePage.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Cite De La Culture");
+        stage.setScene(scene);
+        stage.show();
+        ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void logOut(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../View/Login.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Cite De La Culture");
+        stage.setScene(scene);
+        stage.show();
+        ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
+    }
 }

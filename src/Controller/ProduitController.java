@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.CurrentUser;
 import Model.ProduitStock;
 import Model.StockServices;
 import com.jfoenix.controls.JFXButton;
@@ -14,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -31,7 +33,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ProduitController {
+public class ProduitController implements Initializable{
 
     @FXML
     private JFXTextField name_produit;
@@ -52,21 +54,44 @@ public class ProduitController {
     private AnchorPane mainPane;
     @FXML
     private JFXTextField fileName;
+    @FXML
+    private Label name;
+    @FXML
+    private Label lastname;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        name.setText(CurrentUser.nom);
+        lastname.setText(CurrentUser.prenom);
+    }
 
     @FXML
     void saveProduct(ActionEvent event) {
-
-        StockServices st= new StockServices();
-        ProduitStock product = new ProduitStock();
-        product.setName(name_produit.getText());
-        product.setPrice(Double.parseDouble(price_store.getText()));
-        product.setDescription(description_store.getText());
-        product.setCategory(category_store.getText());
-        product.setQuantity(Integer.parseInt(quantity_store.getText()));
-        product.setImage(fileName.getText());
-        st.ajouterProduit(product);
-        saveAlert(product);
-        clearFields();
+        if (name_produit.getText().equals("")) {
+            name_produit.setText("veuillez saisir le nom du produit");
+        } else if(price_store.getText().equals("")){
+            price_store.setText("veuillez saisir une prix!");
+        } else if (description_store.getText().equals("")) {
+            description_store.setText("veuillez saisir une description");
+        } else if (category_store.getText().equals("")) {
+            category_store.setText("veuillez saisir une cathegorie");
+        }else if (quantity_store.getText().equals("")) {
+            quantity_store.setText("veuillez saisir une quantite!");
+        }else if (fileName.getText().equals("")) {
+            fileName.setText("veuillez choisir une image!");
+        }else {
+            StockServices st = new StockServices();
+            ProduitStock product = new ProduitStock();
+            product.setName(name_produit.getText());
+            product.setPrice(Double.parseDouble(price_store.getText()));
+            product.setDescription(description_store.getText());
+            product.setCategory(category_store.getText());
+            product.setQuantity(Integer.parseInt(quantity_store.getText()));
+            product.setImage(fileName.getText());
+            st.ajouterProduit(product);
+            saveAlert(product);
+            clearFields();
+        }
     }
 
 
@@ -130,6 +155,17 @@ public class ProduitController {
     @FXML
     private void backHome(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../View/adminHomePage.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Cite De La Culture");
+        stage.setScene(scene);
+        stage.show();
+        ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void logOut(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../View/Login.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setTitle("Cite De La Culture");

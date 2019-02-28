@@ -12,34 +12,24 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1150.0" style="-fx-background-color: #fafafa;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ShowController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1446.0" style="-fx-background-color: #fafafa;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ShowController">
     <children>
-        <Pane prefHeight="709.0" prefWidth="180.0" style="-fx-background-color: #4db6ac;">
+        <Pane layoutY="79.0" prefHeight="709.0" prefWidth="253.0" style="-fx-background-color: #15546C;">
             <effect>
                 <DropShadow color="#00000057" />
             </effect>
             <children>
-                <ImageView fitHeight="75.0" fitWidth="81.0" layoutX="50.0" layoutY="26.0">
+                <ImageView fitHeight="75.0" fitWidth="81.0" layoutX="84.0" layoutY="21.0" onMouseClicked="#backHome">
                     <image>
                         <Image url="@../View/img/icons8_Online_Store_48px.png" />
                     </image>
                 </ImageView>
-            <JFXButton layoutX="1.0" layoutY="186.0" onAction="#Retour" prefHeight="50.0" prefWidth="180.0" text="Ajouter Produit">
+            <JFXButton layoutX="1.0" layoutY="153.0" onAction="#Retour" prefHeight="64.0" prefWidth="248.0" text="Ajouter Produit" textFill="WHITE">
                <font>
-                  <Font name="Segoe UI Bold" size="18.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0" startX="0.28640776699029125">
-                     <stops>
-                        <Stop color="#2b73f0" />
-                        <Stop color="#9b19d7" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill></JFXButton>
+                  <Font name="Segoe UI Bold" size="22.0" />
+               </font></JFXButton>
             </children>
         </Pane>
         <Label layoutX="251.0" layoutY="44.0" text="Liste Des Produits" textFill="#35836d">
@@ -47,7 +37,7 @@
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-      <TableView fx:id="table_produit" layoutX="246.0" layoutY="105.0" prefHeight="535.0" prefWidth="901.0" stylesheets="@css/jfx-table-view.css">
+      <TableView fx:id="table_produit" layoutX="293.0" layoutY="105.0" prefHeight="535.0" prefWidth="1076.0" stylesheets="@css/jfx-table-view.css">
         <columns>
           <TableColumn fx:id="table_nom" onEditCommit="#editableName" prefWidth="244.0" text="Nom" />
           <TableColumn fx:id="table_prix" onEditCommit="#editablePrice" text="Prix" />
@@ -66,5 +56,43 @@
          </contextMenu>
       </TableView>
       <JFXTextField fx:id="searchInput" layoutX="884.0" layoutY="46.0" onKeyReleased="#searchTable" promptText="Rechercher" />
+      <Pane layoutX="-1.0" layoutY="29.0" prefHeight="50.0" prefWidth="1447.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <Label layoutX="80.0" layoutY="9.0" text="Cite De La Culture" textFill="#006c94">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView layoutX="23.0" layoutY="10.0">
+               <image>
+                  <Image url="@img/menu.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="1304.0" layoutY="3.0">
+               <image>
+                  <Image url="@img/avatar.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="name" layoutX="1121.0" layoutY="12.0" prefHeight="27.0" prefWidth="93.0" textFill="#535353">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lastname" layoutX="1210.0" layoutY="13.0" prefHeight="24.0" prefWidth="78.0" textFill="#535353">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="1365.0" layoutY="9.0" onMouseClicked="#logOut" style="-fx-background-color: #e57373;" text="Log Out" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <effect>
+            <DropShadow color="#00000053" />
+         </effect>
+      </Pane>
+      <Pane layoutY="-1.0" prefHeight="30.0" prefWidth="1447.0" style="-fx-background-color: black;" />
     </children>
 </AnchorPane>

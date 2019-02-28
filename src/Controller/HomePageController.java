@@ -7,12 +7,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import org.omg.CORBA.Current;
 
 import java.io.IOException;
@@ -68,5 +72,16 @@ public class HomePageController implements Initializable {
     @FXML
     private void Exit(MouseEvent mouseEvent) {
         Platform.exit();
+    }
+
+    @FXML
+    private void logOut(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../View/Login.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Cite De La Culture");
+        stage.setScene(scene);
+        stage.show();
+        ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
     }
 }

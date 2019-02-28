@@ -93,9 +93,10 @@ public class PaymentServices {
         System.out.println("Yay! your payment accepted, enjoy the item!");
         return x;
     }
-    public String createToken(String Number,String m,String y,String cvc) throws StripeException {
+    public String createToken(String Name,String Number,String m,String y,String cvc) throws StripeException {
         Map<String, Object> tokenParams = new HashMap<String, Object>();
         Map<String, Object> cardParams = new HashMap<String, Object>();
+        cardParams.put("name",Name);
         cardParams.put("number", Number);
         cardParams.put("exp_month", m);
         cardParams.put("exp_year", y);

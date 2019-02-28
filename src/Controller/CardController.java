@@ -4,6 +4,7 @@ import Model.CartServices;
 import Model.ConnectionDB;
 import Model.CurrentUser;
 import Model.PaymentServices;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
@@ -11,6 +12,8 @@ import com.stripe.model.Token;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.json.JSONException;
 
 import java.sql.*;
@@ -30,6 +33,8 @@ public class CardController {
     private Connection cnx;
     @FXML
     private Label verification;
+    @FXML
+    private JFXButton payButton;
 
     public CardController() {
         cnx = ConnectionDB.getInstance().getConnection();
@@ -39,35 +44,53 @@ public class CardController {
     private void CheckOut(ActionEvent actionEvent) throws StripeException, SQLException, JSONException {
         PaymentServices pay = new PaymentServices();
         String ex = expDate.getText(); //"02/20"
-        if(!ex.isEmpty()){
-        String m = ex.substring(0,2);
-        String yy = ex.substring(3,5);
-        //System.out.println(m);
-        //System.out.println(yy);
-        String x =pay.createToken(cardNumber.getText(),m,"20"+yy,securityCode.getText());
-        CartServices c = new CartServices();
-        Double tot = c.showCart(CurrentUser.id).stream().mapToDouble(e -> e.getTotal()).sum();
-        if(!tot.equals(0.0)){
-            Charge y =pay.chargeCreditCard(tot,x);
-            //result.setText("Payment Accepted! =D, Total of = "+tot +" USD");
-            addToHistroy(y);
-        }
-        c.showCart(CurrentUser.id).stream().forEach(e ->
-        {
-            int id = e.getId();
-            String req1 = "delete from cart where id=" + id;
-            try {
-                Statement st = cnx.createStatement();
-                st.executeUpdate(req1);
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-        });}else
-        {
-           verification.setText("Put Card Details please!");
-           verification.setStyle("-fx-text-fill: #FF3D00");
-        }
+        if(cardHolder.getText().isEmpty()) {
+            verification.setText("Put Card Details please!");
+            verification.setStyle("-fx-text-fill: #FF3D00");
+        }else if(cardNumber.getText().isEmpty()) {
+            verification.setText("Put Card Details please!");
+            verification.setStyle("-fx-text-fill: #FF3D00");
+        }else if (expDate.getText().isEmpty()) {
+            verification.setText("Put Card Details please!");
+            verification.setStyle("-fx-text-fill: #FF3D00");
+        }else if(securityCode.getText().isEmpty()) {
+            verification.setText("Put Card Details please!");
+            verification.setStyle("-fx-text-fill: #FF3D00");
+        }else {
 
+            String m = ex.substring(0, 2);
+            String yy = ex.substring(3, 5);
+            //System.out.println(m);
+            //System.out.println(yy);
+            String x = pay.createToken(cardHolder.getText(),cardNumber.getText(), m, "20" + yy, securityCode.getText());
+            CartServices c = new CartServices();
+            Double tot = c.showCart(CurrentUser.id).stream().mapToDouble(e -> e.getTotal()).sum();
+            if (!tot.equals(0.0)) {
+                Charge y = pay.chargeCreditCard(tot, x);
+                //result.setText("Payment Accepted! =D, Total of = "+tot +" USD");
+                addToHistroy(y);
+
+            c.showCart(CurrentUser.id).stream().forEach(e ->
+            {
+                int id = e.getId();
+                String req1 = "delete from cart where id=" + id;
+                try {
+                    Statement st = cnx.createStatement();
+                    st.executeUpdate(req1);
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            });
+            Image live = new Image("file:C:\\Users\\PlusUltra\\Documents\\GitHub\\Desktop\\src\\View\\img\\easy.png");
+            payButton.setGraphic(new ImageView(live));
+            payButton.setText("Enjoy!");
+            }else{
+                verification.setText("Nothing to pay!");
+                payButton.setText("Payer");
+                payButton.setGraphic(null);
+            }
+
+        }
     }
     private void addToHistroy(Charge X) throws SQLException {
         //System.out.println(X);
