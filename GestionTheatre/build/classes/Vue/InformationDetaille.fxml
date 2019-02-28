@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vue.InformationDetailleController">
+   <children>
+      <Label fx:id="labeltitre" layoutX="65.0" layoutY="48.0" prefHeight="17.0" prefWidth="106.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imageBD" fitHeight="150.0" fitWidth="200.0" layoutX="325.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="labelnomimage" layoutX="65.0" layoutY="154.0" prefHeight="17.0" prefWidth="93.0" />
+      <Label layoutX="84.0" layoutY="318.0" text="Les Detailles pour la Scéne" />
+   </children>
+</AnchorPane>
