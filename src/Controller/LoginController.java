@@ -19,6 +19,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -73,8 +76,13 @@ public class LoginController implements Initializable {
 
     @FXML
     private void loginToMain(ActionEvent actionEvent) throws SQLException, IOException {
+        Pattern p = Pattern.compile("^[A-Za-z0-9-]+(\\-[A-Za-z0-9])*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9])");
+        Matcher m = p.matcher(user.getText());
         if (user.getText().equals("")) {
             verif.setText("veuillez saisir votre email");
+        } else if(!m.find()){
+            verif.setText("veuillez une adresse email correcte!");
         } else if (pwdd.getText().equals("")) {
             verif.setText("veuillez saisir votre mot de passe");
         } else if (!us.login(user.getText(), pwdd.getText())) {
