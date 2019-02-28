@@ -37,14 +37,14 @@
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-      <TableView fx:id="table_produit" layoutX="293.0" layoutY="105.0" prefHeight="535.0" prefWidth="1076.0" stylesheets="@css/jfx-table-view.css">
+      <TableView fx:id="table_produit" layoutX="293.0" layoutY="105.0" prefHeight="535.0" prefWidth="1076.0" stylesheets="@css/material-design-table-view.css">
         <columns>
-          <TableColumn fx:id="table_nom" onEditCommit="#editableName" prefWidth="244.0" text="Nom" />
-          <TableColumn fx:id="table_prix" onEditCommit="#editablePrice" text="Prix" />
-            <TableColumn fx:id="table_description" onEditCommit="#editableDescription" prefWidth="297.0" text="Description" />
-            <TableColumn fx:id="table_category" minWidth="0.0" onEditCommit="#editableCategory" prefWidth="122.0" text="Cathegorie" />
-            <TableColumn fx:id="table_Quantity" onEditCommit="#editableQuantity" prefWidth="82.0" text="Quantite" />
-            <TableColumn fx:id="table_update" prefWidth="75.0" text="Modifier" />
+          <TableColumn fx:id="table_nom" onEditCommit="#editableName" prefWidth="236.00003051757812" text="Nom" />
+          <TableColumn fx:id="table_prix" onEditCommit="#editablePrice" prefWidth="88.0" text="Prix" />
+            <TableColumn fx:id="table_description" onEditCommit="#editableDescription" prefWidth="249.0" text="Description" />
+            <TableColumn fx:id="table_category" minWidth="0.0" onEditCommit="#editableCategory" prefWidth="184.0" text="Cathegorie" />
+            <TableColumn fx:id="table_Quantity" onEditCommit="#editableQuantity" prefWidth="149.0" text="Quantite" />
+            <TableColumn fx:id="table_update" prefWidth="157.0" text="Image" />
         </columns>
          <contextMenu>
             <ContextMenu>

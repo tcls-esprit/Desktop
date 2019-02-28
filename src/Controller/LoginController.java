@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -81,12 +82,16 @@ public class LoginController implements Initializable {
         Matcher m = p.matcher(user.getText());
         if (user.getText().equals("")) {
             verif.setText("veuillez saisir votre email");
+            verif.setStyle("-fx-text-fill: #ff1744; -fx-background-color: #26A69A;");
         } else if(!m.find()){
-            verif.setText("veuillez une adresse email correcte!");
+            verif.setText("veuillez saisir une adresse email correcte!");
+            verif.setStyle("-fx-text-fill: #ff1744; -fx-background-color: #26A69A;");
         } else if (pwdd.getText().equals("")) {
             verif.setText("veuillez saisir votre mot de passe");
+            verif.setStyle("-fx-text-fill: #ff1744; -fx-background-color: #26A69A;");
         } else if (!us.login(user.getText(), pwdd.getText())) {
             verif.setText("cordonnées invalides");
+            verif.setStyle("-fx-text-fill: #ff1744; -fx-background-color: #26A69A;");
         } else {
             CurrentUser cu = new CurrentUser(us.getUserByEmail(user.getText()));
 
@@ -133,5 +138,6 @@ public class LoginController implements Initializable {
     
     @FXML
     private void closeProgram(ActionEvent actionEvent) {
+        Platform.exit();
     }
 }

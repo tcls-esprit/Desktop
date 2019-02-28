@@ -16,10 +16,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
@@ -38,6 +35,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ShowController implements Initializable {
@@ -209,7 +207,14 @@ public class ShowController implements Initializable {
         StockServices s = new StockServices();
         int id = prod.getId();
         try {
-            s.supprimerProduit(id);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Boîte de dialogue de confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText("Êtes-vous sûr de vouloir supprimer "+prod.getName());
+            Optional<ButtonType> action = alert.showAndWait();
+            if (action.get() == ButtonType.OK) {
+                s.supprimerProduit(id);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -230,7 +235,7 @@ public class ShowController implements Initializable {
                 String title = rs.getString("image");
                 System.out.println(title);
 
-                Image image = new Image("file:C:/xampp/htdocs/ImageStore/"+title);
+                Image image = new Image("file:C:/xampp/htdocs/ImageStore/" + title);
                 ImageView view = new ImageView();
                 view.setImage(image);
                 Stage imageShow = new Stage();
