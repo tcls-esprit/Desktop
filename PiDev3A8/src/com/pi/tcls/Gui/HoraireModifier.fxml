@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="580.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pi.tcls.Gui.HoraireVisitesController">
+   <children>
+      <Label layoutX="38.0" layoutY="176.0" text="Choisissez votre date :" textFill="#070707" />
+      <Label layoutX="38.0" layoutY="228.0" text="Choisissez l'heure précise :" textFill="#0d0d0d" />
+      <Button fx:id="confirmerHoraire2" layoutX="268.0" layoutY="314.0" mnemonicParsing="false" onAction="#modifier" text="Confirmer" />
+      <Label layoutX="367.0" layoutY="207.0" text="à" textFill="#f2efef" />
+      <Label layoutX="38.0" layoutY="257.0" text="NB : la durée maximale des visites est de 30 minutes" textFill="#f50e0e" />
+      <ImageView fitHeight="74.0" fitWidth="150.0" layoutX="258.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Icones/museum.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="134.0" layoutY="102.0" text="Réservez votre visite au musée de la cité de la culture par ici :" />
+      <JFXDatePicker fx:id="datepick1" layoutX="193.0" layoutY="171.0" />
+      <JFXTimePicker fx:id="heureDebut2" layoutX="222.0" layoutY="213.0" prefHeight="31.0" prefWidth="123.0" />
+      <JFXTimePicker fx:id="HeureFin2" layoutX="371.0" layoutY="213.0" prefHeight="31.0" prefWidth="123.0" />
+   </children>
+</AnchorPane>

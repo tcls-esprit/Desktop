@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="PaneVisite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="580.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pi.tcls.Gui.HoraireVisitesController">
+   <children>
+      <Label layoutX="38.0" layoutY="147.0" text="Choisissez votre date :" textFill="#070707" />
+      <Label layoutX="38.0" layoutY="207.0" text="Choisissez l'heure précise :" textFill="#0d0d0d" />
+      <Button fx:id="confirmerHoraire" layoutX="261.0" layoutY="361.0" mnemonicParsing="false" onAction="#Confirmer" text="Confirmer" />
+      <Label layoutX="340.0" layoutY="207.0" text="à" textFill="#f2efef" />
+      <Label layoutX="40.0" layoutY="243.0" text="NB : la durée maximale des visites est de 30 minutes" textFill="#f50e0e" />
+      <ImageView fitHeight="74.0" fitWidth="150.0" layoutX="258.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Icones/museum.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="134.0" layoutY="102.0" text="Réservez votre visite au musée de la cité de la culture par ici :" />
+      <JFXDatePicker fx:id="datepick" layoutX="189.0" layoutY="143.0" />
+      <JFXTimePicker fx:id="heureDebut" layoutX="197.0" layoutY="200.0" prefHeight="31.0" prefWidth="123.0" />
+      <JFXTimePicker fx:id="HeureFin" layoutX="372.0" layoutY="200.0" prefHeight="31.0" prefWidth="123.0" />
+      <JFXComboBox fx:id="comboguide" layoutX="229.0" layoutY="299.0" prefHeight="25.0" prefWidth="123.0" />
+      <Label fx:id="text" layoutX="48.0" layoutY="316.0" text="Veuillez selectionner votre guide :" />
+   </children>
+</AnchorPane>

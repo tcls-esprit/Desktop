@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pi.tcls.Gui.MuseeUtilisateurController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="152.0" style="-fx-background-color: #A9A9A9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="578.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton fx:id="Reserver" layoutX="8.0" layoutY="129.0" onAction="#Resever" prefHeight="45.0" prefWidth="137.0" text="Reserver Visite">
+               <graphic>
+                  <ImageView fitHeight="58.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icones/visit_1318181.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton fx:id="Retour" layoutX="10.0" layoutY="200.0" onAction="#Retour" prefHeight="25.0" prefWidth="114.0" text="Retour">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icones/left-arrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton layoutX="2.0" layoutY="100.0" onAction="#Consulter" text="Consulter les guides">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icones/checklist.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Pane" layoutX="152.0" prefHeight="400.0" prefWidth="580.0" style="-fx-background-color: #A9A9A9;">
+         <children>
+            <ImageView fx:id="aa" fitHeight="355.0" fitWidth="536.0" layoutX="22.0" layoutY="23.0">
+               <image>
+                  <Image url="@../../../../Icones/logo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
